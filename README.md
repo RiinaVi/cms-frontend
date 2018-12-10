@@ -8,9 +8,7 @@ After you clone this repository to your computer, you need to run:
 
 It will install all the necerrairy project dependencies.
 
-Whenever someone changes these dependencies, i.e. someone change package.json or package-lock.json is changed automatically, you will need to run `npm install` once again.
-
-Note, that while package.json declares just dependencies, package-lock.json takes care of having exactly the same dependencies versions as other people collaborating on the project during executing `npm install`.
+Whenever someone changes these dependencies, i.e. someone change package.json, you will need to run `npm install` once again.
 
 When you have all dependencies installed, you may start working on the project. Mainly you will need to use:
 
