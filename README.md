@@ -16,6 +16,16 @@ When you have all dependencies installed, you may start working on the project. 
 
 And the project will start on [http://localhost:3000](http://localhost:3000).
 
+## Used libraries
+
+React router to handle URLs
+
+https://reacttraining.com/react-router/
+
+Ant components used as an application design
+
+https://ant.design/components/button/
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -64,3 +74,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Useful tools
+
+React Developer Tools in Chrome browser
+
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
