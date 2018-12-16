@@ -9,10 +9,17 @@ import {
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import { fetchGreeting } from './connect/connectService';
 
 import LoginPage from './Login/index';
 
 class App extends Component {
+	componentDidMount() {
+		fetchGreeting().then(responseJson =>
+			console.log(responseJson)
+		);
+	}
+
   render() {
     return (
       <div className="App">
