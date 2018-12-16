@@ -83,7 +83,7 @@ class NormalRegisterForm extends Component {
                 <FormItem>
                     {getFieldDecorator('date', {
                         rules: [
-                            {required: true, message: 'Please select birth your date'},
+                            {required: true, message: 'Please select your birth date'},
                             ],
                     })(
                         <DatePicker placeholder="Birth date"/>
