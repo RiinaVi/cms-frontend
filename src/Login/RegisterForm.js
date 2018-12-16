@@ -81,15 +81,6 @@ class NormalRegisterForm extends Component {
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('date', {
-                        rules: [
-                            {required: true, message: 'Please select your birth date'},
-                            ],
-                    })(
-                        <DatePicker placeholder="Birth date"/>
-                    )}
-                </FormItem>
-                <FormItem>
                     <Button type="primary" htmlType="submit" className="submit_button login-form-button">
                         Sign up
                     </Button>

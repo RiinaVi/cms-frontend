@@ -104,10 +104,6 @@ function Reviewers() {
   );
 }
 
-function Login() {
-	LoginPage.render();
-}
-
 function Register() {
 	return (
 		<div>
