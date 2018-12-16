@@ -42,7 +42,9 @@ code {
 .ant-tabs-nav .ant-tabs-tab{
   margin: 0 60px 0 0;
 }
-
+.ant-calendar-picker{
+  width: 100%;
+}
 .login-form-forgot{
   display: block;
   width: 100%;
