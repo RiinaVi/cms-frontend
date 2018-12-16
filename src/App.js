@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +9,8 @@ import {
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+
+import LoginPage from './Login/index';
 
 class App extends Component {
   render() {
@@ -39,7 +42,7 @@ class App extends Component {
 			<Route path="/articles" component={Articles} />
 			<Route path="/authors" component={Authors} />
 			<Route path="/reviewers" component={Reviewers} />
-			<Route path="/login" component={Login} />
+			<Route path="/login" component={LoginPage} />
 			<Route path="/register" component={Register} />
 		  </div>
 		</Router>
@@ -95,22 +98,7 @@ function Reviewers() {
 }
 
 function Login() {
-  return (
-    <div>
-	  <div style={styles.login}>
-		<h3>Sign In</h3>
-		<form>
-			<input type="mail" placeholder="Email Address" value="" name="email" style={styles.loginInput} />
-			<input type="password" placeholder="Password" value="" name="password" style={styles.loginInput} />
-			<input type="submit" value="Confirm" style={styles.loginSubmit} />
-		</form>
-		<a href="#">Forgot password ?</a>
-		<br /><br /><br />
-		
-		<p>Not a member ? <Link to="/register">Register !</Link></p>
-	  </div>
-    </div>
-  );
+	LoginPage.render();
 }
 
 function Register() {
