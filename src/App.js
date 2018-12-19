@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Menu, Icon } from 'antd';
 
 import {
   BrowserRouter as Router,
@@ -13,63 +14,62 @@ import { fetchGreeting } from './connect/connectService';
 
 import LoginPage from './Login/index';
 
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
+
 class App extends Component {
 	componentDidMount() {
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
 		);
 	}
+	
+	state = { 
+		current: 'mail',
+	}
+	
+	handleClick = (e) => {
+		console.log('click ', e);
+		this.setState({
+		  current: e.key,
+		});
+	}
 
-  render() {
-    return (
-      <div className="App">
+	render() {
+		return (
 		<Router>
-		  <div>
-			<ul style={styles.nav}>
-			  <li style={styles.li}>
-				<Link to="/">Events</Link>
-			  </li>
-			  <li style={styles.li}>
-				<Link to="/articles">Articles</Link>
-			  </li>
-			  <li style={styles.li}>
-				<Link to="/authors">Authors</Link>
-			  </li>
-			  <li style={styles.li}>
-				<Link to="/reviewers">Reviewers</Link>
-			  </li>
-			  <li style={styles.li}>
-				<Link to="/login">Login</Link>
-			  </li>
-			</ul>
-
-			<hr />
-
+			<Menu
+				onClick={this.handleClick}
+				selectedKeys={[this.state.current]}
+				mode="horizontal"
+				style={styles.menu}
+			>
+			<Menu.Item key="events" style={styles.menuItem1}>
+			  <Link to="/"><Icon type="mail" />Events</Link>
+			</Menu.Item>
+			<Menu.Item key="authors" style={styles.menuItem}>
+			  <Link to="/authors"><Icon type="appstore" />Authors</Link>
+			</Menu.Item>
+			<Menu.Item key="articles" style={styles.menuItem}>
+			  <Link to="/articles"><Icon type="appstore" />Articles</Link>
+			</Menu.Item>
+			<Menu.Item key="reviewers" style={styles.menuItem}>
+			  <Link to="/reviewers"><Icon type="appstore" />Reviewers</Link>
+			</Menu.Item>
+			<Menu.Item key="login" style={styles.menuItem}>
+			  <Link to="/login"><Icon type="appstore" />Login</Link>
+			</Menu.Item>
+			
 			<Route exact path="/" component={Events} />
 			<Route path="/articles" component={Articles} />
 			<Route path="/authors" component={Authors} />
 			<Route path="/reviewers" component={Reviewers} />
 			<Route path="/login" component={LoginPage} />
 			<Route path="/register" component={Register} />
-		  </div>
-		</Router>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            React Hello World
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+		  </Menu>
+	  </Router>
+		);
+	}
 }
 
 function Events() {
@@ -133,6 +133,21 @@ function Register() {
 }
 
 const styles = {};
+
+styles.menu = {
+
+}
+
+styles.menuItem1 = {
+	marginLeft: "260px",
+	paddingLeft: "70px",
+	paddingRight: "70px"
+}
+
+styles.menuItem = {
+	paddingLeft: "70px",
+	paddingRight: "70px"
+}
 
 styles.nav = {
   padding: 0,
