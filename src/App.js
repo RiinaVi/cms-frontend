@@ -9,6 +9,7 @@ import {
   Redirect
 } from "react-router-dom";
 import logo from './logo.svg';
+import logouser from'.user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
@@ -63,7 +64,7 @@ class App extends Component {
 			  <Link to="/login"><Icon type="appstore" />Login</Link>
 			</Menu.Item>
 			<Menu.Item key="Username" style={styles.menuItem}>
-			  <Link to="/Username"><Icon type="appstore" />Login</Link>
+			  <Link to="/Username"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
 			</Menu.Item>
 			<Route exact path="/" component={Events} />
 			<Route path="/articles" component={Articles} />
