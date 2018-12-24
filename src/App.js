@@ -16,6 +16,7 @@ import { fetchGreeting } from './connect/connectService';
 
 import LoginPage from './Login/index';
 import UserPage from './UserProfile/index';
+import Conference from './ConferencePage/Conference';
 
 
 const SubMenu = Menu.SubMenu;
@@ -73,6 +74,7 @@ class App extends Component {
 			<Route path="/login" component={LoginPage} />
 			<Route path="/user" component={UserPage} />
 			<Route path="/register" component={Register} />
+			<Route path="/conference" component={Conference} />
 		  </Menu>
 	  </Router>
 		);
