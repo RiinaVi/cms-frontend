@@ -14,6 +14,7 @@ import { fetchGreeting } from './connect/connectService';
 
 
 import LoginPage from './Login/index';
+import Username from './Username/index';
 
 
 const SubMenu = Menu.SubMenu;
@@ -61,12 +62,15 @@ class App extends Component {
 			<Menu.Item key="login" style={styles.menuItem}>
 			  <Link to="/login"><Icon type="appstore" />Login</Link>
 			</Menu.Item>
-			
+			<Menu.Item key="Username" style={styles.menuItem}>
+			  <Link to="/Username"><Icon type="appstore" />Login</Link>
+			</Menu.Item>
 			<Route exact path="/" component={Events} />
 			<Route path="/articles" component={Articles} />
 			<Route path="/authors" component={Authors} />
 			<Route path="/reviewers" component={Reviewers} />
 			<Route path="/login" component={LoginPage} />
+			<Route path="/Username" component={Username} />
 			<Route path="/register" component={Register} />
 		  </Menu>
 	  </Router>
