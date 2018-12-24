@@ -12,7 +12,6 @@ import logo from './logo.svg';
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
-import LoginPage from './Login/index';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
