@@ -16,7 +16,7 @@ class UserPage extends Component{
 						<h1>(bio)</h1>
 					</div>
 
-					<div className="user"><img src={logo} className="App-logo" alt="logo" /></div>
+					<div className="user"><img src={logo} className="User-logo" alt="logo" /></div>
 				</div>
 
 				<div className="bio">
