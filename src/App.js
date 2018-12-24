@@ -9,13 +9,13 @@ import {
   Redirect
 } from "react-router-dom";
 import logo from './logo.svg';
-import logouser from'.user.svg'
+import logouser from'./UserProfile/user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
 
 import LoginPage from './Login/index';
-import Username from './Username/index';
+import UserPage from './UserProfile/index';
 
 
 const SubMenu = Menu.SubMenu;
@@ -63,15 +63,15 @@ class App extends Component {
 			<Menu.Item key="login" style={styles.menuItem}>
 			  <Link to="/login"><Icon type="appstore" />Login</Link>
 			</Menu.Item>
-			<Menu.Item key="Username" style={styles.menuItem}>
-			  <Link to="/Username"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
+			<Menu.Item key="user" style={styles.menuItem}>
+			  <Link to="/user"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
 			</Menu.Item>
 			<Route exact path="/" component={Events} />
 			<Route path="/articles" component={Articles} />
 			<Route path="/authors" component={Authors} />
 			<Route path="/reviewers" component={Reviewers} />
 			<Route path="/login" component={LoginPage} />
-			<Route path="/Username" component={Username} />
+			<Route path="/user" component={UserPage} />
 			<Route path="/register" component={Register} />
 		  </Menu>
 	  </Router>

@@ -3,7 +3,7 @@ import logo from './user.svg';
 import './style.css';
 
 
-class LoginPage extends Component{
+class UserPage extends Component{
 	render(){
 		return(
 			 <div className="content">
@@ -33,4 +33,4 @@ class LoginPage extends Component{
 	}
 }
 
-export default Username;
+export default UserPage;
