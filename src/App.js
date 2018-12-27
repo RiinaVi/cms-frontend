@@ -9,14 +9,14 @@ import {
   Redirect
 } from "react-router-dom";
 import logo from './logo.svg';
-import logouser from'./UserProfile/user.svg'
+import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
 
-import LoginPage from './Login/index';
-import UserPage from './UserProfile/index';
-import Conference from './ConferencePage/Conference';
+import LoginPage from './pages/LoginPage/index';
+import UserPage from './pages/UserProfilePage/index';
+import Conference from './pages/ConferencePage/Conference';
 
 
 const SubMenu = Menu.SubMenu;
@@ -43,39 +43,41 @@ class App extends Component {
 	render() {
 		return (
 		<Router>
-			<Menu
-				onClick={this.handleClick}
-				selectedKeys={[this.state.current]}
-				mode="horizontal"
-				style={styles.menu}
-			>
-			<Menu.Item key="events" style={styles.menuItem1}>
-			  <Link to="/"><Icon type="mail" />Events</Link>
-			</Menu.Item>
-			<Menu.Item key="authors" style={styles.menuItem}>
-			  <Link to="/authors"><Icon type="appstore" />Authors</Link>
-			</Menu.Item>
-			<Menu.Item key="articles" style={styles.menuItem}>
-			  <Link to="/articles"><Icon type="appstore" />Articles</Link>
-			</Menu.Item>
-			<Menu.Item key="reviewers" style={styles.menuItem}>
-			  <Link to="/reviewers"><Icon type="appstore" />Reviewers</Link>
-			</Menu.Item>
-			<Menu.Item key="login" style={styles.menuItem}>
-			  <Link to="/login"><Icon type="appstore" />Login</Link>
-			</Menu.Item>
-			<Menu.Item key="user" style={styles.menuItem}>
-			  <Link to="/user"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
-			</Menu.Item>
-			<Route exact path="/" component={Events} />
-			<Route path="/articles" component={Articles} />
-			<Route path="/authors" component={Authors} />
-			<Route path="/reviewers" component={Reviewers} />
-			<Route path="/login" component={LoginPage} />
-			<Route path="/user" component={UserPage} />
-			<Route path="/register" component={Register} />
-			<Route path="/conference" component={Conference} />
-		  </Menu>
+			<div>
+				<Menu
+					onClick={this.handleClick}
+					selectedKeys={[this.state.current]}
+					mode="horizontal"
+					style={styles.menu}
+				>
+					<Menu.Item key="events" style={styles.menuItem1}>
+						<Link to="/"><Icon type="mail" />Events</Link>
+					</Menu.Item>
+					<Menu.Item key="authors" style={styles.menuItem}>
+						<Link to="/authors"><Icon type="appstore" />Authors</Link>
+					</Menu.Item>
+					<Menu.Item key="articles" style={styles.menuItem}>
+						<Link to="/articles"><Icon type="appstore" />Articles</Link>
+					</Menu.Item>
+					<Menu.Item key="reviewers" style={styles.menuItem}>
+						<Link to="/reviewers"><Icon type="appstore" />Reviewers</Link>
+					</Menu.Item>
+					<Menu.Item key="login" style={styles.menuItem}>
+						<Link to="/login"><Icon type="appstore" />Login</Link>
+					</Menu.Item>
+					<Menu.Item key="user" style={styles.menuItem}>
+						<Link to="/user"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
+					</Menu.Item>
+				</Menu>
+				<Route exact path="/" component={Events} />
+				<Route path="/articles" component={Articles} />
+				<Route path="/authors" component={Authors} />
+				<Route path="/reviewers" component={Reviewers} />
+				<Route path="/login" component={LoginPage} />
+				<Route path="/user" component={UserPage} />
+				<Route path="/register" component={Register} />
+				<Route path="/conference" component={Conference} />
+			</div>
 	  </Router>
 		);
 	}
