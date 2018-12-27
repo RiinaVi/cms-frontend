@@ -7,7 +7,7 @@ class UserPage extends Component{
 	render(){
 		return(
 			 <div className="content">
-				<div classNme="inform">
+				<div className="inform">
 					
 					<div className="text">
 						<h1>(Username)</h1>

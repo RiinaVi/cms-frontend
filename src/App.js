@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Link,
   Redirect
 } from "react-router-dom";
+import history from './history';
 import logo from './logo.svg';
 import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
 
-import LoginPage from './pages/LoginPage/index';
+import AuthPage from './pages/AuthPage/index';
 import UserPage from './pages/UserProfilePage/index';
 import Conference from './pages/ConferencePage/Conference';
 
@@ -23,18 +24,20 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			current: history.location.pathname,
+		};
+	}
+
 	componentDidMount() {
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
 		);
 	}
 	
-	state = { 
-		current: 'mail',
-	}
-	
 	handleClick = (e) => {
-		console.log('click ', e);
 		this.setState({
 		  current: e.key,
 		});
@@ -42,7 +45,7 @@ class App extends Component {
 
 	render() {
 		return (
-		<Router>
+		<Router history={history}>
 			<div>
 				<Menu
 					onClick={this.handleClick}
@@ -50,22 +53,22 @@ class App extends Component {
 					mode="horizontal"
 					style={styles.menu}
 				>
-					<Menu.Item key="events" style={styles.menuItem1}>
+					<Menu.Item key="/" style={styles.menuItem1}>
 						<Link to="/"><Icon type="mail" />Events</Link>
 					</Menu.Item>
-					<Menu.Item key="authors" style={styles.menuItem}>
+					<Menu.Item key="/authors" style={styles.menuItem}>
 						<Link to="/authors"><Icon type="appstore" />Authors</Link>
 					</Menu.Item>
-					<Menu.Item key="articles" style={styles.menuItem}>
+					<Menu.Item key="/articles" style={styles.menuItem}>
 						<Link to="/articles"><Icon type="appstore" />Articles</Link>
 					</Menu.Item>
-					<Menu.Item key="reviewers" style={styles.menuItem}>
+					<Menu.Item key="/reviewers" style={styles.menuItem}>
 						<Link to="/reviewers"><Icon type="appstore" />Reviewers</Link>
 					</Menu.Item>
-					<Menu.Item key="login" style={styles.menuItem}>
+					<Menu.Item key="/login" style={styles.menuItem}>
 						<Link to="/login"><Icon type="appstore" />Login</Link>
 					</Menu.Item>
-					<Menu.Item key="user" style={styles.menuItem}>
+					<Menu.Item key="/user" style={styles.menuItem}>
 						<Link to="/user"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
 					</Menu.Item>
 				</Menu>
@@ -73,9 +76,9 @@ class App extends Component {
 				<Route path="/articles" component={Articles} />
 				<Route path="/authors" component={Authors} />
 				<Route path="/reviewers" component={Reviewers} />
-				<Route path="/login" component={LoginPage} />
+				<Route path="/login" component={AuthPage} />
 				<Route path="/user" component={UserPage} />
-				<Route path="/register" component={Register} />
+				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
 			</div>
 	  </Router>
@@ -113,34 +116,6 @@ function Reviewers() {
       <h2>Reviewers</h2>
     </div>
   );
-}
-
-function Register() {
-	return (
-		<div>
-			<div style={styles.register}>
-				<h3>Register</h3>
-				
-				<form>
-					<p>Email</p>
-					<input type="mail" placeholder="Email address" value="" name="email" style={styles.registerInput} />
-					
-					<p>Password</p>
-					<input type="password" placeholder="********" value="" name="password" style={styles.registerInput} />
-					
-					<p>Confirm Password</p>
-					<input type="password" placeholder="********" value="" name="confirm_password" style={styles.registerInput} />
-					
-					<p>Birthdate</p>
-					<input type="date" value="" name="birthdate" />
-					
-					<p><input type="checkbox" value="" name="terms_box" />I've read and accept <a href="#">The Terms of Service</a></p>
-					
-					<input type="submit" value="Confirm" style={styles.registerSubmit} />
-				</form>
-			</div>
-		</div>
-	);
 }
 
 const styles = {};
