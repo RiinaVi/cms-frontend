@@ -17,7 +17,7 @@ import { fetchGreeting } from './connect/connectService';
 
 import AuthPage from './pages/AuthPage/index';
 import UserPage from './pages/UserProfilePage/index';
-import UserPageEdit from './pages/UserProfilePage/UserPageEdit';
+//import UserPageEdit from './pages/UserProfilePage/UserPageEdit';
 import Conference from './pages/ConferencePage/Conference';
 
 
@@ -79,7 +79,7 @@ class App extends Component {
 				<Route path="/reviewers" component={Reviewers} />
 				<Route path="/login" component={AuthPage} />
 				<Route path="/user" component={UserPage} />
-				<Route path="/userEdit" component={UserPageEdit} />
+				{/* <Route path="/userEdit" component={UserPageEdit} /> */}
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
 			</div>
