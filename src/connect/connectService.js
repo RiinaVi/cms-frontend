@@ -21,8 +21,9 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
     if(method === httpMethods.GET)
       url = createUrl(urlDomain, paramsData);
     else if (method === httpMethods.POST)
-      requestSettings.body = JSON.stringify(paramsData);
+      requestSettings.body = paramsData;
   }
+  console.log(requestSettings);
   return fetch(url, requestSettings).then(response => {
     if (response.status >= 200 && response.status < 300) {
       return response.json();
@@ -32,6 +33,15 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
       return Promise.reject(error);
     }
   });
+}
+
+export const login = (username, password) => {
+  const params = {
+    username: username,
+    password: password
+  };
+  const url = `${apiUrlRequest}/login`;
+  return fetchTemplate(url, httpMethods.POST, params);
 }
 
 export const fetchGreeting = () => {
