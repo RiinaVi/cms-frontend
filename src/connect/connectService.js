@@ -21,7 +21,7 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
     if(method === httpMethods.GET)
       url = createUrl(urlDomain, paramsData);
     else if (method === httpMethods.POST)
-      requestSettings.body = paramsData;
+      requestSettings.body = JSON.stringify(paramsData);
   }
   console.log(requestSettings);
   return fetch(url, requestSettings).then(response => {
