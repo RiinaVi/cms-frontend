@@ -1,5 +1,4 @@
 .authors_table{
-    border: 2px solid #9c9c9c;
     max-width: 90%;
     margin: 50px auto 0;
 
@@ -7,12 +6,13 @@
 .authorItem{
     background: #ffffff;
     display: flex;
-    border-bottom: 2px solid #9c9c9c;
+    border: 1px solid #9c9c9c;
+    border-bottom: none;
     align-items: center;
     padding: 2px 2px 2px 30px;
 }
 .authorItem:last-of-type{
-    border-bottom: none;
+    border-bottom: 1px solid #9c9c9c;
 }
 .articlesInfo{
     flex-grow: 2;
@@ -28,7 +28,7 @@
 .authorInfo, .authorActivities{
     flex-shrink: 0;
 }
-.userImage, .picture{
+.userImage, .profileImage{
     flex-shrink: 0;
     width: 45px;
     height: 45px;
@@ -38,6 +38,7 @@
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+    overflow: hidden;
 }
 .userImage svg{
     height: 60%;
