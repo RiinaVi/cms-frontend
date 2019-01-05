@@ -1,23 +1,17 @@
 .reviewers_table{
-    border: 2px solid #9c9c9c;
     max-width: 90%;
     margin: 50px auto 0;
-
 }
 .reviewerItem{
     background: #ffffff;
     display: flex;
-    border-bottom: 2px solid #9c9c9c;
+    border: 1px solid #9c9c9c;
+    border-bottom: none;
     align-items: center;
     padding: 2px 30px 2px 30px;
 }
 .reviewerItem:last-of-type{
-    border-bottom: none;
-}
-.articlesInfo{
-    flex-grow: 2;
-    font-size: 18px;
-    padding-right: 20px;
+    border-bottom: 1px solid #9c9c9c;
 }
 .reviewerInfo{
     min-width: 320px;

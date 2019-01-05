@@ -9,7 +9,10 @@ class ReviewItem extends Component {
         this.props.authorData.average = Number(this.props.authorData.average).toFixed(1);
         //this.authorData = this.props.authorData;
         if(this.props.authorData.profile_image_url!=null){
-            this.userImage = <img className="picture" src={this.props.authorData.profile_image_url} alt=""></img>
+            this.userImage =
+                <div className="profileImage">
+                    <img src={this.props.authorData.profile_image_url} alt=""/>
+                </div>
         }else{
             this.userImage = <Icon className = "userImage" type="user" />
         }
