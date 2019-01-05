@@ -57,22 +57,22 @@ class App extends Component {
 					className='appMenu'
 				>
 					<Menu.Item key="/" style={styles.menuItem}>
-						<Link to="/"><Icon type="mail" />Events</Link>
+						<Link to="/"><Icon type="calendar" />Events</Link>
 					</Menu.Item>
 					<Menu.Item key="/authors" style={styles.menuItem}>
-						<Link to="/authors"><Icon type="appstore" />Authors</Link>
+						<Link to="/authors"><Icon type="team" />Authors</Link>
 					</Menu.Item>
 					<Menu.Item key="/articles" style={styles.menuItem}>
-						<Link to="/articles"><Icon type="appstore" />Articles</Link>
+						<Link to="/articles"><Icon type="snippets" />Articles</Link>
 					</Menu.Item>
 					<Menu.Item key="/reviewers" style={styles.menuItem}>
-						<Link to="/reviewers"><Icon type="appstore" />Reviewers</Link>
+						<Link to="/reviewers"><Icon type="solution" />Reviewers</Link>
 					</Menu.Item>
 					<Menu.Item key="/login" style={styles.menuItem}>
-						<Link to="/login"><Icon type="appstore" />Login</Link>
+						<Link to="/login"><Icon type="login" />Login</Link>
 					</Menu.Item>
 					<Menu.Item key="/user" style={styles.menuItem}>
-						<Link to="/user"><Icon type="appstore" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
+						<Link to="/user"><Icon type="user" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
 					</Menu.Item>
 				</Menu>
 				<Route exact path="/" component={Events} />
