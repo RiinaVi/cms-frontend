@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import AuthorInfo from "./authorInfo";
 import './index.css';
 import {Pagination} from 'antd';
+import ReactDOM from "react-dom";
 
 class AuthorsPage extends Component {
 
@@ -89,6 +90,16 @@ class AuthorsPage extends Component {
         this.forceUpdate();
     };
 
+    componentDidMount = () => {
+        let node = ReactDOM.findDOMNode(this);
+        let table_height = node.getBoundingClientRect().height;
+        console.log(node.childNodes[0]);
+        node.childNodes[0].style.height = table_height + "px";
+        // set el height and width etc.
+
+    };
+
+
     render() {
         let self = this,
             arr = [];
@@ -104,10 +115,13 @@ class AuthorsPage extends Component {
         }
         return (
             <div className="AuthorsPage">
-                <div className="authors_table">
-                    {
-                        arr
-                    }
+                <div className="table_container">
+
+                    <div className="authors_table">
+                        {
+                            arr
+                        }
+                    </div>
                 </div>
                 <Pagination className="pagination"
                             defaultCurrent={1}
