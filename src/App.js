@@ -17,6 +17,7 @@ import { fetchGreeting } from './connect/connectService';
 
 import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
+import ReviewersPage from './pages/ReviewersPage/index';
 import UserPage from './pages/UserProfilePage/index';
 //import UserPageEdit from './pages/UserProfilePage/UserPageEdit';
 import Conference from './pages/ConferencePage/Conference';
@@ -77,7 +78,7 @@ class App extends Component {
 				<Route exact path="/" component={Events} />
 				<Route path="/articles" component={Articles} />
 				<Route path="/authors" component={AuthorsPage} />
-				<Route path="/reviewers" component={Reviewers} />
+				<Route path="/reviewers" component={ReviewersPage} />
 				<Route path="/login" component={AuthPage} />
 				<Route path="/user" component={UserPage} />
 				{/* <Route path="/userEdit" component={UserPageEdit} /> */}

@@ -1,0 +1,64 @@
+.reviewers_table{
+    border: 2px solid #9c9c9c;
+    max-width: 90%;
+    margin: 50px auto 0;
+
+}
+.reviewerItem{
+    background: #ffffff;
+    display: flex;
+    border-bottom: 2px solid #9c9c9c;
+    align-items: center;
+    padding: 2px 30px 2px 30px;
+}
+.reviewerItem:last-of-type{
+    border-bottom: none;
+}
+.articlesInfo{
+    flex-grow: 2;
+    font-size: 18px;
+    padding-right: 20px;
+}
+.reviewerInfo{
+    min-width: 320px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.reviewerInfo, .reviewerActivities{
+    flex-shrink: 0;
+}
+
+.reviewerName{
+    font-size: 33px;
+    overflow: hidden;
+    padding-right: 20px;
+}
+.reviewerActivities{
+    font-size: 18px;
+}
+.articlesRead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.proceedingsJoined{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+.proceedingsJoined span{
+    padding-left: 20px;
+}
+
+.reviewerItem .articlesWritten, .reviewerItem .mostRecentArticle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewerItem .mostRecentArticleTitle{
+    text-decoration: underline;
+}
+
