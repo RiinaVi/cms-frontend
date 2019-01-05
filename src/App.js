@@ -19,7 +19,7 @@ import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
 import ReviewersPage from './pages/ReviewersPage/index';
 import UserPage from './pages/UserProfilePage/index';
-//import UserPageEdit from './pages/UserProfilePage/UserPageEdit';
+import UserEditPage from './pages/UserEditPage/index';
 import Conference from './pages/ConferencePage/Conference';
 
 
@@ -81,7 +81,7 @@ class App extends Component {
 				<Route path="/reviewers" component={ReviewersPage} />
 				<Route path="/login" component={AuthPage} />
 				<Route path="/user" component={UserPage} />
-				{/* <Route path="/userEdit" component={UserPageEdit} /> */}
+				<Route path="/userEdit" component={UserEditPage} />
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
 			</div>
