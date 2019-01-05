@@ -54,7 +54,7 @@ class App extends Component {
 					onClick={this.handleClick}
 					selectedKeys={[this.state.current]}
 					mode="horizontal"
-					style={styles.menu}
+					className='appMenu'
 				>
 					<Menu.Item key="/" style={styles.menuItem}>
 						<Link to="/"><Icon type="mail" />Events</Link>
@@ -106,87 +106,70 @@ function Articles() {
   );
 }
 
-function Reviewers() {
-  return (
-    <div>
-      <h2>Reviewers</h2>
-    </div>
-  );
-}
-
-const styles = {};
-
-styles.menu = {
-
-}
-
-styles.menuItem1 = {
-	//marginLeft: "260px",
-	paddingLeft: "70px",
-	paddingRight: "70px"
-}
-
-styles.menuItem = {
-	paddingLeft: "65px",
-	paddingRight: "65px"
-}
-
-styles.nav = {
-  padding: 0,
-  margin: 0,
-  marginLeft: "350px",
-  marginTop: "20px",
-  height: "50px",
-  width: "100px",
-  display: "flex"
-};
-
-styles.li = {
-  marginRight: "150px",
-  listStyleType: "none"
-};
-
-styles.login = {
-	width: "400px",
-	height: "500px",
-	marginLeft: "550px",
-	marginBottom: "100px",
-	backgroundColor: "#D0D0D0",
-	border: "1px solid black"
-};
-
-styles.loginInput = {
-	width: "300px",
-	height: "30px",
-	marginTop: "20px"
-};
-
-styles.loginSubmit = {
-	marginTop: "20px",
-	width: "250px",
-	height: "30px",
-	backgroundColor: "#bae7ff"
-};
-
-styles.register = {
-	width: "400px",
-	height: "500px",
-	marginLeft: "550px",
-	marginBottom: "100px",
-	backgroundColor: "#D0D0D0",
-	border: "1px solid black"
-};
-
-styles.registerInput = {
-	width: "250px",
-	height: "30px"
-};
-
-styles.registerSubmit = {
-	marginTop: "20px",
-	width: "250px",
-	height: "30px",
-	backgroundColor: "#bae7ff"
+const styles = {
+	
+	menuItem: {
+		paddingLeft: "65px",
+		paddingRight: "65px"
+	},
+	
+	nav: {
+		padding: 0,
+		margin: 0,
+		marginLeft: "350px",
+		marginTop: "20px",
+		height: "50px",
+		width: "100px",
+		display: "flex"
+	},
+	
+	li: {
+		marginRight: "150px",
+		listStyleType: "none"
+	},
+	
+	login: {
+		width: "400px",
+		height: "500px",
+		marginLeft: "550px",
+		marginBottom: "100px",
+		backgroundColor: "#D0D0D0",
+		border: "1px solid black"
+	},
+	
+	loginInput: {
+		width: "300px",
+		height: "30px",
+		marginTop: "20px"
+	},
+	
+	loginSubmit: {
+		marginTop: "20px",
+		width: "250px",
+		height: "30px",
+		backgroundColor: "#bae7ff"
+	},
+	
+	register: {
+		width: "400px",
+		height: "500px",
+		marginLeft: "550px",
+		marginBottom: "100px",
+		backgroundColor: "#D0D0D0",
+		border: "1px solid black"
+	},
+	
+	registerInput: {
+		width: "250px",
+		height: "30px"
+	},
+	
+	registerSubmit: {
+		marginTop: "20px",
+		width: "250px",
+		height: "30px",
+		backgroundColor: "#bae7ff"
+	},
 };
 
 export default App;
