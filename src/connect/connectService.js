@@ -51,3 +51,18 @@ export const fetchGreeting = () => {
   const url = `${apiUrlRequest}/greeting`;
   return fetchTemplate(url, httpMethods.GET, params);
 }
+
+export const fetchProfile = () => {
+  const url = `${apiUrlRequest}/profile`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+
+export const fetchConferences = () => {
+  const url = `${apiUrlRequest}/conferences`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+
+export const fetchArticles = () => {
+  const url = `${apiUrlRequest}/articles`;
+  return fetchTemplate(url, httpMethods.GET)
+}
