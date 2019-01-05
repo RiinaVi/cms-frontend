@@ -16,6 +16,7 @@ import { fetchGreeting } from './connect/connectService';
 
 
 import AuthPage from './pages/AuthPage/index';
+import AuthorsPage from './pages/AuthorsPage/index';
 import UserPage from './pages/UserProfilePage/index';
 //import UserPageEdit from './pages/UserProfilePage/UserPageEdit';
 import Conference from './pages/ConferencePage/Conference';
@@ -54,7 +55,7 @@ class App extends Component {
 					mode="horizontal"
 					style={styles.menu}
 				>
-					<Menu.Item key="/" style={styles.menuItem1}>
+					<Menu.Item key="/" style={styles.menuItem}>
 						<Link to="/"><Icon type="mail" />Events</Link>
 					</Menu.Item>
 					<Menu.Item key="/authors" style={styles.menuItem}>
@@ -75,7 +76,7 @@ class App extends Component {
 				</Menu>
 				<Route exact path="/" component={Events} />
 				<Route path="/articles" component={Articles} />
-				<Route path="/authors" component={Authors} />
+				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={Reviewers} />
 				<Route path="/login" component={AuthPage} />
 				<Route path="/user" component={UserPage} />
@@ -104,14 +105,6 @@ function Articles() {
   );
 }
 
-function Authors() {
-  return (
-    <div>
-      <h2>Authors</h2>
-    </div>
-  );
-}
-
 function Reviewers() {
   return (
     <div>
@@ -127,14 +120,14 @@ styles.menu = {
 }
 
 styles.menuItem1 = {
-	marginLeft: "260px",
+	//marginLeft: "260px",
 	paddingLeft: "70px",
 	paddingRight: "70px"
 }
 
 styles.menuItem = {
-	paddingLeft: "70px",
-	paddingRight: "70px"
+	paddingLeft: "65px",
+	paddingRight: "65px"
 }
 
 styles.nav = {
