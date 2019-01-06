@@ -37,7 +37,7 @@ class App extends Component {
 	componentDidMount() {
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
-		);
+		).catch(error => console.log(error));
 	}
 	
 	handleClick = (e) => {

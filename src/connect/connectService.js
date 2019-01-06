@@ -12,7 +12,7 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
   let url = urlDomain;
   let requestSettings = {
     'method': method,
-    // 'credentials': 'include', //TODO: need CORS handling on backend
+    'credentials': 'include', //If something not works, comment it.....
     'headers': {
       'Content-type': 'application/json'
     }
@@ -25,10 +25,13 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
   }
   console.log(requestSettings);
   return fetch(url, requestSettings).then(response => {
+    console.log(response)
     if (response.status >= 200 && response.status < 300) {
-      return response.json();
+      const contentType = response.headers.get('Content-Type');
+      let result = !!contentType && contentType.includes('application/json') ? response.json() : null;
+      return result;
     } else {
-      var error = new Error(response.statusText || response.status);
+      let error = new Error(response.statusText || response.status);
       error.response = response;
       return Promise.reject(error);
     }
