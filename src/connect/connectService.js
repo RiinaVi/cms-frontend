@@ -4,6 +4,7 @@ import {createUrl} from "./requestTools";
 const httpMethods = {
   GET: 'GET',
   POST: 'POST',
+  PUT: 'PUT',
   DELETE: 'DELETE'
 };
 const apiUrlRequest = config.apiUrl;
@@ -63,6 +64,23 @@ export const fetchProfile = () => {
 export const fetchConferences = () => {
   const url = `${apiUrlRequest}/conferences`;
   return fetchTemplate(url, httpMethods.GET)
+}
+
+export const fetchSingleConference = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const addSingleConference = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}`;
+  return fetchTemplate(url, httpMethods.POST)
+}
+export const updateSingleConference = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}`;
+  return fetchTemplate(url, httpMethods.PUT)
+}
+export const deleteSingleConference = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}`;
+  return fetchTemplate(url, httpMethods.DELETE)
 }
 
 export const fetchArticles = () => {
