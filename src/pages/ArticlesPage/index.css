@@ -1,12 +1,12 @@
-.AuthorsPage {
+.ArticlesPage {
 	width: 100%;
 }
-.authors_table{
+.articles_table{
     max-width: 90%;
     margin: 50px auto 0;
 
 }
-.authorItem{
+.articleItem{
     background: #ffffff;
     display: flex;
     border: 1px solid #9c9c9c;
@@ -14,7 +14,7 @@
     align-items: center;
     padding: 2px 2px 2px 30px;
 }
-.authorItem:last-of-type{
+.articleItem:last-of-type{
     border-bottom: 1px solid #9c9c9c;
 }
 .articlesInfo{
@@ -22,13 +22,13 @@
     font-size: 18px;
     padding-right: 20px;
 }
-.authorInfo{
+.articleInfo{
     width: 30%;
     min-width: 320px;
     display: flex;
     align-items: center;
 }
-.authorInfo, .authorActivities{
+.articleInfo, .articleActivities{
     flex-shrink: 0;
 }
 .userImage, .profileImage{
@@ -47,41 +47,26 @@
     height: 60%;
     width: 60%;
 }
-.authorName{
+.articleAuthorName{
     font-size: 33px;
     overflow: hidden;
     padding-right: 20px;
 }
-.authorActivities{
-    font-size: 18px;
-    padding-right: 15px;
-}
-.averageScore{
-    display: flex;
-    align-items: center;
-}
-.rateStars{
-    font-size: 15px;
-    vertical-align: middle;
-    padding-left: 15px;
-}
-.proceedingsJoined{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 22px;
-}
-.proceedingsJoined span{
-    font-size: 18px;
-}
 
-.mostRecentArticleTitle{
-    padding-left: 15px;
-
-}
-
-.numberOfArticlesWritten{
+.theArticleName{
     padding-left: 30px;
+}
+
+.articleDate {
+	padding-right: 120px;
+}
+
+.articleAction {
+	padding-right: 50px;
+}
+
+.downloadArticle {
+	width: 80px;
 }
 
 .pagination{

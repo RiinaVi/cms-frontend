@@ -14,6 +14,7 @@ code {
 }
 
 .login_form{
+  width: 800px;
   max-width: 300px;
   border: 1px solid rgba(24, 144, 255, .2);
   margin: 50px auto;
@@ -49,4 +50,8 @@ code {
   display: block;
   width: 100%;
   text-align: right;
+}
+
+.content {
+	background-color: white;
 }

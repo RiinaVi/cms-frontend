@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Layout } from 'antd';
+import 'antd/dist/antd.css';
 
 import {
   Router,
@@ -14,7 +15,8 @@ import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
-
+import EventsPage from './pages/EventsPage/index';
+import ArticlesPage from './pages/ArticlesPage/index';
 import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
 import ReviewersPage from './pages/ReviewersPage/index';
@@ -25,6 +27,7 @@ import Conference from './pages/ConferencePage/Conference';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+const { Header, Content, Sider } = Layout;
 
 class App extends Component {
 	constructor(props) {
@@ -49,34 +52,34 @@ class App extends Component {
 	render() {
 		return (
 		<Router history={history}>
-			<div>
+			<div className="page">
 				<Menu
 					onClick={this.handleClick}
 					selectedKeys={[this.state.current]}
 					mode="horizontal"
 					className='appMenu'
 				>
-					<Menu.Item key="/" style={styles.menuItem}>
+					<Menu.Item key="/" className="menuItem">
 						<Link to="/"><Icon type="calendar" />Events</Link>
 					</Menu.Item>
-					<Menu.Item key="/authors" style={styles.menuItem}>
+					<Menu.Item key="/authors" className="menuItem">
 						<Link to="/authors"><Icon type="team" />Authors</Link>
 					</Menu.Item>
-					<Menu.Item key="/articles" style={styles.menuItem}>
+					<Menu.Item key="/articles" className="menuItem">
 						<Link to="/articles"><Icon type="snippets" />Articles</Link>
 					</Menu.Item>
-					<Menu.Item key="/reviewers" style={styles.menuItem}>
+					<Menu.Item key="/reviewers" className="menuItem">
 						<Link to="/reviewers"><Icon type="solution" />Reviewers</Link>
 					</Menu.Item>
-					<Menu.Item key="/login" style={styles.menuItem}>
+					<Menu.Item key="/login" className="menuItem">
 						<Link to="/login"><Icon type="login" />Login</Link>
 					</Menu.Item>
-					<Menu.Item key="/user" style={styles.menuItem}>
+					<Menu.Item key="/user" className="menuItem">
 						<Link to="/user"><Icon type="user" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
 					</Menu.Item>
 				</Menu>
-				<Route exact path="/" component={Events} />
-				<Route path="/articles" component={Articles} />
+				<Route exact path="/" component={EventsPage} />
+				<Route path="/articles" component={ArticlesPage} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={ReviewersPage} />
 				<Route path="/login" component={AuthPage} />
@@ -85,7 +88,7 @@ class App extends Component {
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
 			</div>
-	  </Router>
+		</Router>
 		);
 	}
 }
@@ -105,71 +108,5 @@ function Articles() {
     </div>
   );
 }
-
-const styles = {
-	
-	menuItem: {
-		paddingLeft: "65px",
-		paddingRight: "65px"
-	},
-	
-	nav: {
-		padding: 0,
-		margin: 0,
-		marginLeft: "350px",
-		marginTop: "20px",
-		height: "50px",
-		width: "100px",
-		display: "flex"
-	},
-	
-	li: {
-		marginRight: "150px",
-		listStyleType: "none"
-	},
-	
-	login: {
-		width: "400px",
-		height: "500px",
-		marginLeft: "550px",
-		marginBottom: "100px",
-		backgroundColor: "#D0D0D0",
-		border: "1px solid black"
-	},
-	
-	loginInput: {
-		width: "300px",
-		height: "30px",
-		marginTop: "20px"
-	},
-	
-	loginSubmit: {
-		marginTop: "20px",
-		width: "250px",
-		height: "30px",
-		backgroundColor: "#bae7ff"
-	},
-	
-	register: {
-		width: "400px",
-		height: "500px",
-		marginLeft: "550px",
-		marginBottom: "100px",
-		backgroundColor: "#D0D0D0",
-		border: "1px solid black"
-	},
-	
-	registerInput: {
-		width: "250px",
-		height: "30px"
-	},
-	
-	registerSubmit: {
-		marginTop: "20px",
-		width: "250px",
-		height: "30px",
-		backgroundColor: "#bae7ff"
-	},
-};
 
 export default App;

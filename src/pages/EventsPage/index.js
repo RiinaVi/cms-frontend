@@ -1,23 +1,20 @@
-import {Tabs, Layout, Menu, Icon} from 'antd';
-import 'antd/dist/antd.css';
-
 import React, {Component} from 'react';
-import { withRouter } from "react-router-dom";
+import ReactDOM from "react-dom";
+import {withRouter} from "react-router-dom";
+import {List, Layout, Menu, Icon} from 'antd';
+
+import 'antd/dist/antd.css';
 import './index.css';
 
-import './LoginFrom';
-import NormalLoginForm from "./LoginFrom";
-import NormalRegisterForm from "./RegisterForm"
-
-const TabPane = Tabs.TabPane;
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
-class AuthPage extends Component{
-	render(){
-		return(
+class EventsPage extends Component {
+
+    render() {
+        return (
 			<div>
-				<Layout>
+				<Layout className="layout">
 					<Sider className="sider">
 						<Menu
 						  mode="inline"
@@ -54,18 +51,14 @@ class AuthPage extends Component{
 						</Menu>
 					</Sider>
 					<Content className="content">
-						<div className="login_form">
-							<h1 className="login_form_title">Login</h1>
-							<Tabs defaultActiveKey={!this.props.register ? '1' : '2'} onChange={(activeKey) => this.props.history.push(activeKey === '1' ? '/login' : '/register')}>
-								<TabPane tab="Sign in" key="1"><NormalLoginForm/></TabPane>
-								<TabPane tab="Register" key="2"><NormalRegisterForm/></TabPane>
-							</Tabs>
+						<div className="EventsPage">
+							<h2>Events Page</h2>
 						</div>
 					</Content>
 				</Layout>
 			</div>
-		);
-	}
+        );
+    }
 }
 
-export default withRouter(AuthPage);
+export default withRouter(EventsPage);
