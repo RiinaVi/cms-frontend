@@ -1,0 +1,113 @@
+.AuthorsPage {
+	width: 100%;
+}
+.authors_table{
+    max-width: 90%;
+    margin: 50px auto 0;
+
+}
+.authorItem{
+    background: #ffffff;
+    display: flex;
+    border: 1px solid #9c9c9c;
+    border-bottom: none;
+    align-items: center;
+    padding: 2px 2px 2px 30px;
+}
+.authorItem:last-of-type{
+    border-bottom: 1px solid #9c9c9c;
+}
+.articlesInfo{
+    flex-grow: 2;
+    font-size: 18px;
+    padding-right: 20px;
+}
+.authorInfo{
+    width: 30%;
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+}
+.authorInfo, .authorActivities{
+    flex-shrink: 0;
+}
+.userImage, .profileImage{
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #9c9c9c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    overflow: hidden;
+}
+.userImage svg{
+    height: 60%;
+    width: 60%;
+}
+.authorName{
+    font-size: 33px;
+    overflow: hidden;
+    padding-right: 20px;
+}
+.authorActivities{
+    font-size: 18px;
+    padding-right: 15px;
+}
+.averageScore{
+    display: flex;
+    align-items: center;
+}
+.rateStars{
+    font-size: 15px;
+    vertical-align: middle;
+    padding-left: 15px;
+}
+.proceedingsJoined{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+}
+.proceedingsJoined span{
+    font-size: 18px;
+}
+
+.mostRecentArticleTitle{
+    padding-left: 15px;
+
+}
+
+.numberOfArticlesWritten{
+    padding-left: 30px;
+}
+
+.pagination{
+    float: right;
+    margin-right: 5%;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.ant-pagination-prev, .ant-pagination-next, .ant-pagination-jump-prev, .ant-pagination-jump-next, .ant-pagination-item{
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+.ant-pagination-item-active{
+    background: #1890ff;
+}
+.ant-pagination-item-active a, .ant-pagination-item-active:focus a, .ant-pagination-item-active:hover a{
+    color: #ffffff;
+}
+
+.layout {
+	background-color: white;
+}
+
+.sider {
+	border-right: 1px solid gray;
+}
