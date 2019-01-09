@@ -23,7 +23,6 @@ class ArticlesPage extends Component {
 	componentDidMount = () => {
 		fetchArticles().then(responseJson => {
 			this.setState({data: responseJson})
-			console.log(responseJson)
 		}).catch(error => console.log(error));
 
 		let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
