@@ -39,7 +39,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		console.log(history.location.pathname)
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
 		).catch(error => console.log(error));
