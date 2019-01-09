@@ -23,6 +23,7 @@ import ReviewersPage from './pages/ReviewersPage/index';
 import UserPage from './pages/UserProfilePage/index';
 import UserEditPage from './pages/UserEditPage/index';
 import Conference from './pages/ConferencePage/Conference';
+import EditConference from './pages/ConferencePage/EditConference';
 
 
 const SubMenu = Menu.SubMenu;
@@ -38,6 +39,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		console.log(history.location.pathname)
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
 		).catch(error => console.log(error));
@@ -87,6 +89,7 @@ class App extends Component {
 				<Route path="/userEdit" component={UserEditPage} />
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
+				<Route path="/conferenceEdit" component={EditConference} />
 			</div>
 		</Router>
 		);
