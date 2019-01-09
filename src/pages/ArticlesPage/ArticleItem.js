@@ -4,11 +4,6 @@ import {Icon, Rate} from 'antd';
 import React, {Component} from 'react';
 
 class ArticleItem extends Component {
-    constructor(props) {
-        super(props);
-        this.props.articleData.average = Number(this.props.articleData.average).toFixed(1);
-    }
-
     render() {
         return (
             <div className="articleItem">
