@@ -24,6 +24,9 @@ import UserPage from './pages/UserProfilePage/index';
 import UserEditPage from './pages/UserEditPage/index';
 import Conference from './pages/ConferencePage/Conference';
 import EditConference from './pages/ConferencePage/EditConference';
+import ArticlesReviewsPage from './pages/ArticlesReviewsPage/index';
+import ReviewersReviewsPage from './pages/ReviewersReviewsPage/index';
+import AuthorsArticlesPage from './pages/AuthorsArticlesPage/index';
 
 
 const SubMenu = Menu.SubMenu;
@@ -89,6 +92,9 @@ class App extends Component {
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conference" component={Conference} />
 				<Route path="/conferenceEdit" component={EditConference} />
+				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
+				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
+				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />
 			</div>
 		</Router>
 		);

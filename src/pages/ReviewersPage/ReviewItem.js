@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css';
 import { Icon, Rate } from 'antd';
+import {Link} from "react-router-dom";
 
 import React, {Component} from 'react';
 
@@ -23,7 +24,7 @@ class ReviewItem extends Component {
             <div className="reviewerItem">
                 <div className="reviewerInfo">
                     {this.userImage}
-                    <div className="reviewerName">{this.props.authorData.name}</div>
+                    <Link to="/ReviewerReviewsPage"><div className="reviewerName">{this.props.authorData.name}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articlesWritten">

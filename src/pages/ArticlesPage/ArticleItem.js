@@ -2,13 +2,14 @@ import 'antd/dist/antd.css';
 import {Icon, Rate} from 'antd';
 
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 class ArticleItem extends Component {
     render() {
         return (
             <div className="articleItem">
                 <div className="articleInfo">
-                    <div className="articleAuthorName">{this.props.articleData.userAuthorID}</div>
+                    <Link to="/AuthorArticlesPage"><div className="articleAuthorName">{this.props.articleData.userAuthorID}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articleName">
@@ -20,7 +21,7 @@ class ArticleItem extends Component {
                 </div>
                 <div className="articleAction">
                         <Icon type="download" className="downloadArticle" />
-                        <Icon type="read" className="readArticle" />
+                        <Link to="/ArticleReviews"><Icon type="read" className="readArticle" /></Link>
                 </div>
             </div>
         );
