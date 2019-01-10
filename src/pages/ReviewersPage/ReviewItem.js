@@ -21,7 +21,7 @@ class ReviewItem extends Component {
 
     render() {
         return (
-            <div className="reviewerItem">
+            <div className="reviewerItem tableItem">
                 <div className="reviewerInfo">
                     {this.userImage}
                     <Link to="/ReviewerReviewsPage"><div className="reviewerName">{this.props.authorData.name}</div></Link>

@@ -1,21 +1,26 @@
-.ReviewersPage {
-	width: 100%;
+.ReviewersPage{
+    width: 100%;
 }
-.reviewers_table{
-    max-width: 90%;
-    margin: 50px auto 0;
-}
-.reviewerItem{
+.tableItem{
     background: #ffffff;
     display: flex;
     border: 1px solid #9c9c9c;
     border-bottom: none;
     align-items: center;
-    padding: 2px 30px 2px 30px;
+    padding: 2px 2px 2px 30px;
 }
-.reviewerItem:last-of-type{
+.tableItem:last-of-type{
     border-bottom: 1px solid #9c9c9c;
 }
+.tableBody{
+    max-width: 90%;
+    margin: 50px auto 0;
+}
+
+.reviewerItem{
+    padding: 2px 30px 2px 30px;
+}
+
 .reviewerInfo{
     min-width: 320px;
     width: 30%;
@@ -59,3 +64,7 @@
     text-decoration: underline;
 }
 
+.eventActivities{
+    padding-right: 15px;
+    font-size: 18px;
+}

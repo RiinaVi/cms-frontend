@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 class ArticleItem extends Component {
     render() {
         return (
-            <div className="articleItem">
+            <div className="articleItem tableItem">
                 <div className="articleInfo">
                     <Link to="/AuthorArticlesPage"><div className="articleAuthorName">{this.props.articleData.authorName}</div></Link>
                 </div>

@@ -84,7 +84,7 @@ class AuthorsPage extends Component {
     }
 
     componentDidMount = () => {
-        let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
+        let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
         let table_height = table.getBoundingClientRect().height;
         table.style.height = table_height + "px";
     };

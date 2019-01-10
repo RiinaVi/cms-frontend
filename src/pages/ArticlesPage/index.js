@@ -84,7 +84,7 @@ class ArticlesPage extends Component {
 					<Content className="content">
 						<div className="ArticlesPage">
 							<List
-								className="articles_table"
+								className="articles_table tableBody"
 								itemLayout="vertical"
 								size="large"
 								pagination={{
