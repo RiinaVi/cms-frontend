@@ -9,7 +9,7 @@ class ArticleItem extends Component {
         return (
             <div className="articleItem">
                 <div className="articleInfo">
-                    <Link to="/AuthorArticlesPage"><div className="articleAuthorName">{this.props.articleData.userAuthorID}</div></Link>
+                    <Link to="/AuthorArticlesPage"><div className="articleAuthorName">{this.props.articleData.authorName}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articleName">
