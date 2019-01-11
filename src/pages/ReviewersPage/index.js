@@ -93,7 +93,7 @@ class ReviewersPage extends Component {
     componentDidMount = () => {
         let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
         let table_height = table.getBoundingClientRect().height;
-        table.style.height = table_height + "px";
+        table.style.minHeight = table_height + "px";
     };
 
     render() {
