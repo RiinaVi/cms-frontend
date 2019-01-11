@@ -1,14 +1,16 @@
 import 'antd/dist/antd.css';
 import {Icon, Rate} from 'antd';
+import {withRouter} from "react-router-dom";
 
 import React, {Component} from 'react';
 
 class EventItem extends Component {
     render() {
+        const organizer = this.props.eventData.organizer;
         return (
-            <div className="eventItem tableItem">
+            <div onClick={() => this.props.history.push(`/conferences/${this.props.eventData.conferenceID}`)} className="eventItem tableItem">
                 <div className="eventPage_chosenAuthor">
-                    {this.props.eventData.organizerID}
+                    {!!organizer && `${organizer.firstName} ${organizer.lastName}`}
                 </div>
                 <div className="eventPage_articleTitle">
                     <span className="eventPage_articleTitle_text">{this.props.eventData.conferenceName}</span>
@@ -25,4 +27,4 @@ class EventItem extends Component {
     }
 }
 
-export default EventItem;
+export default withRouter(EventItem);

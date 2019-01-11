@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
 import './Conference.css';
+import { fetchSingleConference } from '../../connect/connectService';
 
 class Conference extends Component {
-  state = {
-    conference: {
-      title: 'Conference Title',
-      place: 'Conference place',
-      startDate: 'Conference start',
-      endDate: 'Conference end',
-      organizer: 'Conference organizer'
-    }
-  };
+	constructor(props) {
+		super(props);
+		this.state = {
+			conference: {}
+		}
+	}
+
+  componentDidMount = () => {
+		fetchSingleConference(this.props.match.params.id).then(responseJson => {
+			this.setState({conference: responseJson})
+		}).catch(error => console.log(error));
+  }
 
   render() {
     const {
-      title,
-      place,
+      conferenceName,
+      description,
+      accomodationInfo,
+      emergencyInfo,
       startDate,
-      endDate,
+      finishDate,
       organizer
     } = this.state.conference;
+    const organizerFirstName = !!this.state.conference && !!this.state.conference.organizer && organizer.firstName;
+    const organizerLastName = !!this.state.conference && !!this.state.conference.organizer && organizer.lastName;
     return (
       <div className="container">
         <div className="grid-container">
@@ -28,15 +36,17 @@ class Conference extends Component {
             src="https://source.unsplash.com/bzdhc5b3Bxs/250x150"
             alt=""
           />
-          <h1 className="item2">{title}</h1>
-          <h3 className="item3">By: {organizer}</h3>
-          <h3 className="item4">Place: {place}</h3>
+          <h1 className="item2">{conferenceName}</h1>
+          <h3 className="item3">By: {`${organizerFirstName} ${organizerLastName}`}</h3>
+          <h3 className="item4">Place: {accomodationInfo}</h3>
           <h3 className="item5">From: {startDate}</h3>
-          <h3 className="item6">To: {endDate}</h3>
+          <h3 className="item6">To: {finishDate}</h3>
         </div>
 
         <h2>Info:</h2>
-        <div className="descriptionBox" />
+        <div className="descriptionBox" >
+          {description}
+        </div>
 
         <a href="#">See the list of all Articles</a>
         <br />
