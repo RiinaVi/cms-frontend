@@ -54,7 +54,7 @@ class Conference extends Component {
         <br />
         <a href="#">See the session plan</a>
 
-        <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>
+        {!!this.props.userData && this.props.userData.role === 'admin' && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
         <Button type='primary' size='large'>Add to my Events</Button>
       </div>
     );

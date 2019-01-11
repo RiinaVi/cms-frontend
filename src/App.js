@@ -13,7 +13,7 @@ import history from './history';
 import logo from './logo.svg';
 import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
-import { fetchGreeting } from './connect/connectService';
+import { fetchGreeting, fetchUserLoggedIn, logout } from './connect/connectService';
 
 import ArticlesPage from './pages/ArticlesPage/index';
 import AuthPage from './pages/AuthPage/index';
@@ -27,6 +27,7 @@ import EditConference from './pages/ConferencePage/EditConference';
 import ArticlesReviewsPage from './pages/ArticlesReviewsPage/index';
 import ReviewersReviewsPage from './pages/ReviewersReviewsPage/index';
 import AuthorsArticlesPage from './pages/AuthorsArticlesPage/index';
+import { saveUser } from './connect/requestTools';
 
 
 const SubMenu = Menu.SubMenu;
@@ -38,6 +39,7 @@ class App extends Component {
 		super(props);
 		this.state = { 
 			current: history.location.pathname,
+			userData: null
 		};
 	}
 
@@ -45,6 +47,19 @@ class App extends Component {
 		fetchGreeting().then(responseJson =>
 			console.log(responseJson)
 		).catch(error => console.log(error));
+		this.checkUserData();
+	}
+
+	checkUserData = () => {
+		fetchUserLoggedIn().then(responseJson => {
+			this.setState({userData: !responseJson ? null : responseJson})
+		}).catch(error => console.log(error));
+	}
+
+	onLogoutClick = () => {
+		logout().then(responseJson => {
+			this.setState({userData: null})
+		}).catch(error => console.log(error));
 	}
 	
 	handleClick = (e) => {
@@ -75,22 +90,25 @@ class App extends Component {
 					<Menu.Item key="/reviewers" className="menuItem">
 						<Link to="/reviewers"><Icon type="solution" />Reviewers</Link>
 					</Menu.Item>
-					<Menu.Item key="/login" className="menuItem">
+					{!this.state.userData && <Menu.Item key="/login" className="menuItem">
 						<Link to="/login"><Icon type="login" />Login</Link>
-					</Menu.Item>
-					<Menu.Item key="/user" className="menuItem">
-						<Link to="/user"><Icon type="user" />Username<img src={logouser} className="user-logo" alt="logo" /></Link>
-					</Menu.Item>
+					</Menu.Item>}
+					{!!this.state.userData && <Menu.Item key="/logout" className="menuItem" onClick={this.onLogoutClick}>
+					<Icon type="logout" />Logout
+					</Menu.Item>}
+					{!!this.state.userData && <Menu.Item key="/user" className="menuItem">
+						<Link to="/user"><Icon type="user" />{this.state.userData.username}<img src={logouser} className="user-logo" alt="logo" /></Link>
+					</Menu.Item>}
 				</Menu>
 				<Route exact path="/" component={EventsPage} />
 				<Route path="/articles" component={ArticlesPage} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={ReviewersPage} />
-				<Route path="/login" component={AuthPage} />
+				<Route path="/login" component={() => <AuthPage onLoggedIn={this.checkUserData}/>} />
 				<Route path="/user" component={UserPage} />
 				<Route path="/userEdit" component={UserEditPage} />
 				<Route path="/register" component={() => <AuthPage register/>} />
-				<Route path="/conferences/:id" component={Conference} />
+				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData}/>} />
 				<Route path="/conferencesEdit/:id" component={EditConference} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />

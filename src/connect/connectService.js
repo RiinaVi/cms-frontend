@@ -48,6 +48,11 @@ export const login = (username, password) => {
   return fetchTemplate(url, httpMethods.POST, params);
 }
 
+export const logout = () => {
+  const url = `${apiUrlRequest}/logout`;
+  return fetchTemplate(url, httpMethods.GET);
+}
+
 export const fetchGreeting = () => {
   const params = {
     name: 'Dawid'
@@ -56,6 +61,10 @@ export const fetchGreeting = () => {
   return fetchTemplate(url, httpMethods.GET, params);
 }
 
+export const fetchUserLoggedIn = () => {
+  const url = `${apiUrlRequest}/user`;
+  return fetchTemplate(url, httpMethods.GET)
+}
 export const fetchUserProfile = userId => {
   const url = `${apiUrlRequest}/user/${userId}`;
   return fetchTemplate(url, httpMethods.GET)

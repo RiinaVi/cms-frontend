@@ -12,9 +12,10 @@ class NormalLoginForm extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                login(this.state.username, this.state.password).then(responseJson =>
-                    console.log(responseJson)
-                );
+                login(this.state.username, this.state.password).then(responseJson => {
+                    console.log(responseJson);
+                    this.props.onLoggedIn();
+                });
                 console.log('Received values of form: ', values);
             }
         });

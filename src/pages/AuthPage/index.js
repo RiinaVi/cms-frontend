@@ -57,7 +57,7 @@ class AuthPage extends Component{
 						<div className="login_form">
 							<h1 className="login_form_title">Login</h1>
 							<Tabs defaultActiveKey={!this.props.register ? '1' : '2'} onChange={(activeKey) => this.props.history.push(activeKey === '1' ? '/login' : '/register')}>
-								<TabPane tab="Sign in" key="1"><NormalLoginForm/></TabPane>
+								<TabPane tab="Sign in" key="1"><NormalLoginForm onLoggedIn={this.props.onLoggedIn}/></TabPane>
 								<TabPane tab="Register" key="2"><NormalRegisterForm/></TabPane>
 							</Tabs>
 						</div>
