@@ -47,6 +47,7 @@ class EditConference extends Component {
     }
     updateSingleConference(this.props.match.params.id, params).then(responseJson => {
       this.setState({loadingSave: false});
+      this.props.history.push(`/conferences/${this.props.match.params.id}`)
 		}).catch(error => {
       console.log(error)
       this.setState({loadingSave: false});
