@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import "./Conference.css";
+import React, { Component } from 'react';
+import './Conference.css';
 
 class Conference extends Component {
   state = {
     conference: {
-      title: "Conference Title",
-      place: "Conference place",
-      startDate: "Conference start",
-      endDate: "Conference end",
-      organizer: "Conference organizer"
+      title: 'Conference Title',
+      place: 'Conference place',
+      startDate: 'Conference start',
+      endDate: 'Conference end',
+      organizer: 'Conference organizer'
     }
   };
 
@@ -21,22 +21,22 @@ class Conference extends Component {
       organizer
     } = this.state.conference;
     return (
-      <div>
+      <div className="container">
         <div className="grid-container">
           <img
-            id="item1"
+            className="item1"
             src="https://source.unsplash.com/bzdhc5b3Bxs/250x150"
             alt=""
           />
-          <h1 id="item2">{title}</h1>
-          <h3 id="item3">By: {organizer}</h3>
-          <h3 id="item4">Place: {place}</h3>
-          <h3 id="item5">From: {startDate}</h3>
-          <h3 id="item6">To: {endDate}</h3>
+          <h1 className="item2">{title}</h1>
+          <h3 className="item3">By: {organizer}</h3>
+          <h3 className="item4">Place: {place}</h3>
+          <h3 className="item5">From: {startDate}</h3>
+          <h3 className="item6">To: {endDate}</h3>
         </div>
 
         <h2>Info:</h2>
-        <div id="description" />
+        <div className="descriptionBox" />
 
         <a href="#">See the list of all Articles</a>
         <br />

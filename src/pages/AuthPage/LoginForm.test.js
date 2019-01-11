@@ -7,11 +7,10 @@ import { shallow } from 'enzyme';
 import NormalLoginForm from './LoginFrom';
 import sinon from 'sinon';
 import {Button} from 'antd';
+import closeModal from './LoginFrom';
 // import Button from './LoginFrom';
+configure({ adapter: new Adapter() });
 
-configure({ 
-  adapter: new Adapter() 
-});
 
 describe('My component',() => {
     test('LoginForm Page renders correctly', () => {
@@ -20,7 +19,8 @@ describe('My component',() => {
     });
 });
 
-it('Renders children when passed in', () => {
+
+it('renders children when passed in', () => {
     const wrapper = shallow((
       <FormItem>
         <div className="submit_button login-form-button" />
@@ -30,7 +30,7 @@ it('Renders children when passed in', () => {
   });
 
 
-  it('Simulates click events', () => {
+  it('simulates click events', () => {
     const onClick = sinon.spy();
     const wrapper = shallow(<Button onClick={onClick} />);
     wrapper.find('button').simulate('click');
@@ -40,39 +40,3 @@ it('Renders children when passed in', () => {
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
