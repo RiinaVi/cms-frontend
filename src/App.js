@@ -15,11 +15,11 @@ import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
 import { fetchGreeting } from './connect/connectService';
 
-import EventsPage from './pages/EventsPage/index';
 import ArticlesPage from './pages/ArticlesPage/index';
 import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
 import ReviewersPage from './pages/ReviewersPage/index';
+import EventsPage from './pages/EventsPage/index';
 import UserPage from './pages/UserProfilePage/index';
 import UserEditPage from './pages/UserEditPage/index';
 import Conference from './pages/ConferencePage/Conference';
@@ -95,6 +95,7 @@ class App extends Component {
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />
+
 			</div>
 		</Router>
 		);
