@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Layout, Menu, Icon} from 'antd';
+import {withRouter} from "react-router-dom";
 import logo from './user.svg';
 import './style.css';
 
@@ -41,7 +42,7 @@ class UserPage extends Component{
 							<Icon type="unlock" />
 							<span>Ask for permission</span>
 						  </Menu.Item>
-						  <Menu.Item>
+						  <Menu.Item onClick={() => this.props.history.push("/userEdit")}>
 							<Icon type="edit" />
 							<span>Edit Profile</span>
 						  </Menu.Item>
@@ -78,4 +79,4 @@ class UserPage extends Component{
 	}
 }
 
-export default UserPage;
+export default withRouter(UserPage);

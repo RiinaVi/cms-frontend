@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {withRouter} from "react-router-dom";
 import {List, Layout, Menu, Icon} from 'antd';
 
-//import { fetchReviews } from '../../connect/connectService';
+import { fetchReviews } from '../../connect/connectService';
 import ArticleReviewItem from "./ArticleReviewItem";
 import 'antd/dist/antd.css';
 import './index.css';
@@ -18,20 +18,20 @@ class ArticlesReviewsPage extends Component {
 		this.state = {
 			data: []
 		}
-    }
+	}
 
-    componentDidMount = () => {
-		//fetchReviews().then(responseJson => {
-		//	this.setState({data: responseJson})
-//}).catch(error => console.log(error));
-		
-        let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
+	componentDidMount = () => {
+		fetchReviews().then(responseJson => {
+			this.setState({data: responseJson})
+		}).catch(error => console.log(error));
+	
+		let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
 		let table_height = table.getBoundingClientRect().height;
 		table.style.height = table_height + "px";
-    };
+	};
 
-    render() {
-        return (
+	render() {
+		return (
 			<div>
 				<Layout className="layout">
 					<Sider className="sider">
@@ -102,8 +102,8 @@ class ArticlesReviewsPage extends Component {
 					</Content>
 				</Layout>
 			</div>
-        );
-    }
+		);
+	}
 }
 
 export default withRouter(ArticlesReviewsPage);
