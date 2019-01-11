@@ -56,8 +56,16 @@ export const fetchGreeting = () => {
   return fetchTemplate(url, httpMethods.GET, params);
 }
 
-export const fetchProfile = () => {
-  const url = `${apiUrlRequest}/profile`;
+export const fetchUserProfile = userId => {
+  const url = `${apiUrlRequest}/user/${userId}`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchAuthors = () => {
+  const url = `${apiUrlRequest}/authors`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchReviewers = () => {
+  const url = `${apiUrlRequest}/reviewers`;
   return fetchTemplate(url, httpMethods.GET)
 }
 
@@ -87,3 +95,9 @@ export const fetchArticles = () => {
   const url = `${apiUrlRequest}/articles`;
   return fetchTemplate(url, httpMethods.GET)
 }
+
+export const fetchReviews = () => {
+  const url = `${apiUrlRequest}/reviews`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+
