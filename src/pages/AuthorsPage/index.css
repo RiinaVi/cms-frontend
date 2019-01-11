@@ -1,22 +1,6 @@
 .AuthorsPage {
 	width: 100%;
 }
-.authors_table{
-    max-width: 90%;
-    margin: 50px auto 0;
-
-}
-.authorItem{
-    background: #ffffff;
-    display: flex;
-    border: 1px solid #9c9c9c;
-    border-bottom: none;
-    align-items: center;
-    padding: 2px 2px 2px 30px;
-}
-.authorItem:last-of-type{
-    border-bottom: 1px solid #9c9c9c;
-}
 .articlesInfo{
     flex-grow: 2;
     font-size: 18px;

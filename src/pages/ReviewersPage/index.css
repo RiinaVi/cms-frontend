@@ -2,6 +2,7 @@
     width: 100%;
 }
 .tableItem{
+    flex-wrap: wrap;
     background: #ffffff;
     display: flex;
     border: 1px solid #9c9c9c;

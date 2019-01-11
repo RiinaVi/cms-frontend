@@ -22,7 +22,7 @@ class AuthorsPage extends Component {
                 "articles_count": 500,
                 "most_recent": "Article Title",
                 "joined": 20,
-                "average": 3
+                "average": 3.0
             },
             {
                 "profile_image_url": null,
@@ -30,7 +30,7 @@ class AuthorsPage extends Component {
                 "articles_count": 140,
                 "most_recent": "Lorem ipsum dolor.",
                 "joined": 10,
-                "average": 3
+                "average": 3.0
             },
             {
                 "profile_image_url": null,
@@ -131,7 +131,7 @@ class AuthorsPage extends Component {
 					<Content className="content">
 						<div className="AuthorsPage">
 							<List
-								className="authors_table"
+								className="authors_table tableBody"
 								itemLayout="vertical"
 								size="large"
 								pagination={{

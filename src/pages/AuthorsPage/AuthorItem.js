@@ -19,7 +19,7 @@ class AuthorItem extends Component {
 
     render() {
         return (
-            <div className="authorItem">
+            <div className="authorItem tableItem">
                 <div className="authorInfo">
                     {this.userImage}
                     <div className="authorName">{this.props.authorData.name}</div>
