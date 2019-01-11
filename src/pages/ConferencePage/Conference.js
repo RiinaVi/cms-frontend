@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Conference.css';
 import { fetchSingleConference } from '../../connect/connectService';
+import { Button } from 'antd';
+import {withRouter} from "react-router-dom";
 
 class Conference extends Component {
 	constructor(props) {
@@ -52,10 +54,11 @@ class Conference extends Component {
         <br />
         <a href="#">See the session plan</a>
 
-        <button>Add to my Events</button>
+        <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>
+        <Button type='primary' size='large'>Add to my Events</Button>
       </div>
     );
   }
 }
 
-export default Conference;
+export default withRouter(Conference);

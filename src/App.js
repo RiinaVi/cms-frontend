@@ -91,7 +91,7 @@ class App extends Component {
 				<Route path="/userEdit" component={UserEditPage} />
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conferences/:id" component={Conference} />
-				<Route path="/conferenceEdit" component={EditConference} />
+				<Route path="/conferencesEdit/:id" component={EditConference} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />

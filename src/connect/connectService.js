@@ -21,7 +21,7 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
   if(paramsData !== undefined){
     if(method === httpMethods.GET)
       url = createUrl(urlDomain, paramsData);
-    else if (method === httpMethods.POST)
+    else if (method === httpMethods.POST || method === httpMethods.PUT)
       requestSettings.body = JSON.stringify(paramsData);
   }
   console.log(requestSettings);
@@ -78,13 +78,13 @@ export const fetchSingleConference = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
   return fetchTemplate(url, httpMethods.GET)
 }
-export const addSingleConference = conferenceId => {
+export const addSingleConference = (conferenceId, conferenceParams) => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
-  return fetchTemplate(url, httpMethods.POST)
+  return fetchTemplate(url, httpMethods.POST, conferenceParams)
 }
-export const updateSingleConference = conferenceId => {
+export const updateSingleConference = (conferenceId, conferenceParams) => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
-  return fetchTemplate(url, httpMethods.PUT)
+  return fetchTemplate(url, httpMethods.PUT, conferenceParams)
 }
 export const deleteSingleConference = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
