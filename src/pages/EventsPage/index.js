@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import './index.css';
 
 import EventItem from "./EventItem";
+import { fetchConferences } from '../../connect/connectService';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -15,59 +16,16 @@ class EventsPage extends Component {
 
 	constructor(props) {
 		super(props);
-		this.data = [
-			{
-				"name": "Lorem Ipsum1",
-				"title": "Lorem ipsum dolor1.",
-				"date": "11/01/19",
-				"rating": 3.5
-			},
-			{
-				"name": "Lorem Ipsum",
-				"title": "Lorem ipsum dolor1.",
-				"date": "11/01/19",
-				"rating": 3.5
-			},
-			{
-				"name": "Lorem Ipsum2",
-				"title": "Lorem ipsum dolor1.",
-				"date": "11/01/19",
-				"rating": 1.5
-			},
-			{
-				"name": "Lorem Ipsum3",
-				"title": "Lorem ipsum dolor.",
-				"date": "11/01/19",
-				"rating": .5
-			},
-			{
-				"name": "Lorem Ipsum4",
-				"title": "Lorem ipsum dolor.",
-				"date": "11/01/19",
-				"rating": 3.5
-			},
-			{
-				"name": "Lorem ",
-				"title": "Lorem ipsum dolor.",
-				"date": "11/01/19",
-				"rating": 1.5
-			},
-			{
-				"name": "Lorem Ipsum6",
-				"title": "Lorem ipsum dolor.",
-				"date": "11/01/19",
-				"rating": 1.5
-			},
-			{
-				"name": "Lorem Ipsum7",
-				"title": "Lorem ipsum dolor.",
-				"date": "11/01/19",
-				"rating": 1.5
-			}
-		];
+		this.state = {
+			data: []
+		}
 	}
 
 	componentDidMount = () => {
+		fetchConferences().then(responseJson => {
+			this.setState({data: responseJson})
+		}).catch(error => console.log(error));
+
 		let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
 		let table_height = table.getBoundingClientRect().height;
 		table.style.minHeight = table_height + "px";
@@ -124,7 +82,7 @@ class EventsPage extends Component {
 									},
 									pageSize: 3,
 								}}
-								dataSource={this.data}
+								dataSource={this.state.data}
 								renderItem={eventData => (
 									<EventItem eventData={eventData}/>
 								)}

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {withRouter} from "react-router-dom";
 import {List, Layout, Menu, Icon} from 'antd';
 
+import { fetchReviews } from '../../connect/connectService';
 import ArticleReviewItem from "./ArticleReviewItem";
 import 'antd/dist/antd.css';
 import './index.css';
@@ -14,66 +15,23 @@ class ArticlesReviewsPage extends Component {
 	
 	constructor(props) {
 		super(props);
-		this.data = [
-			{
-				"profile_image_url": "https://placehold.it/50x50",
-				"name": "Article",
-				"average": 3.5,
-				"publication_date": "10/04/2018"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 1",
-				"average": 3.5,
-				"publication_date": "21/05/2018"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 2",
-				"average": 3.5,
-				"publication_date": "01/02/2018"
-			},
-			{
-				"profile_image_url": "https://placehold.it/50x50",
-				"name": "Article 3",
-				"average": 3.5,
-				"publication_date": "15/11/2018"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 4",
-				"average": 3.5,
-				"publication_date": "01/06/2019"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 5",
-				"average": 3.5,
-				"publication_date": "28/08/2018"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 6",
-				"average": 3.5,
-				"publication_date": "17/03/2018"
-			},
-			{
-				"profile_image_url": null,
-				"name": "Article 7",
-				"average": 3.5,
-				"publication_date": "01/02/2019"
-			}
-		];
-    }
+		this.state = {
+			data: []
+		}
+	}
 
-    componentDidMount = () => {
-        let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
-        let table_height = table.getBoundingClientRect().height;
-        table.style.height = table_height + "px";
-    };
+	componentDidMount = () => {
+		fetchReviews().then(responseJson => {
+			this.setState({data: responseJson})
+		}).catch(error => console.log(error));
+	
+		let table = ReactDOM.findDOMNode(this).childNodes[0].childNodes[0];
+		let table_height = table.getBoundingClientRect().height;
+		table.style.height = table_height + "px";
+	};
 
-    render() {
-        return (
+	render() {
+		return (
 			<div>
 				<Layout className="layout">
 					<Sider className="sider">
@@ -135,7 +93,7 @@ class ArticlesReviewsPage extends Component {
 									},
 									pageSize: 5,
 								}}
-								dataSource={this.data}
+								dataSource={this.state.data}
 								renderItem={article_data => (
 									<ArticleReviewItem articleReviewData={article_data}/>
 								)}
@@ -144,8 +102,8 @@ class ArticlesReviewsPage extends Component {
 					</Content>
 				</Layout>
 			</div>
-        );
-    }
+		);
+	}
 }
 
 export default withRouter(ArticlesReviewsPage);

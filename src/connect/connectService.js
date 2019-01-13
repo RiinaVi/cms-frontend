@@ -21,7 +21,7 @@ const fetchTemplate = (urlDomain, method, paramsData) => {
   if(paramsData !== undefined){
     if(method === httpMethods.GET)
       url = createUrl(urlDomain, paramsData);
-    else if (method === httpMethods.POST)
+    else if (method === httpMethods.POST || method === httpMethods.PUT)
       requestSettings.body = JSON.stringify(paramsData);
   }
   console.log(requestSettings);
@@ -48,6 +48,11 @@ export const login = (username, password) => {
   return fetchTemplate(url, httpMethods.POST, params);
 }
 
+export const logout = () => {
+  const url = `${apiUrlRequest}/logout`;
+  return fetchTemplate(url, httpMethods.GET);
+}
+
 export const fetchGreeting = () => {
   const params = {
     name: 'Dawid'
@@ -56,8 +61,20 @@ export const fetchGreeting = () => {
   return fetchTemplate(url, httpMethods.GET, params);
 }
 
-export const fetchProfile = () => {
-  const url = `${apiUrlRequest}/profile`;
+export const fetchUserLoggedIn = () => {
+  const url = `${apiUrlRequest}/user`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchUserProfile = userId => {
+  const url = `${apiUrlRequest}/user/${userId}`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchAuthors = () => {
+  const url = `${apiUrlRequest}/authors`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchReviewers = () => {
+  const url = `${apiUrlRequest}/reviewers`;
   return fetchTemplate(url, httpMethods.GET)
 }
 
@@ -70,13 +87,13 @@ export const fetchSingleConference = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
   return fetchTemplate(url, httpMethods.GET)
 }
-export const addSingleConference = conferenceId => {
+export const addSingleConference = (conferenceId, conferenceParams) => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
-  return fetchTemplate(url, httpMethods.POST)
+  return fetchTemplate(url, httpMethods.POST, conferenceParams)
 }
-export const updateSingleConference = conferenceId => {
+export const updateSingleConference = (conferenceId, conferenceParams) => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
-  return fetchTemplate(url, httpMethods.PUT)
+  return fetchTemplate(url, httpMethods.PUT, conferenceParams)
 }
 export const deleteSingleConference = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}`;
@@ -87,3 +104,9 @@ export const fetchArticles = () => {
   const url = `${apiUrlRequest}/articles`;
   return fetchTemplate(url, httpMethods.GET)
 }
+
+export const fetchReviews = () => {
+  const url = `${apiUrlRequest}/reviews`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+
