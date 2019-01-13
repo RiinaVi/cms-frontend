@@ -38,7 +38,7 @@ class Conference extends Component {
         <h2>Info:</h2>
         <div className="descriptionBox" />
 
-        <a href="#">See the list of all Articles</a>
+        <a href="/events_articles">See the list of all Articles</a>
         <br />
         <a href="#">See the session plan</a>
 

@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css';
 import {Icon, Rate} from 'antd';
+import {Link} from "react-router-dom";
 
 import React, {Component} from 'react';
 
@@ -22,7 +23,7 @@ class AuthorItem extends Component {
             <div className="authorItem tableItem">
                 <div className="authorInfo">
                     {this.userImage}
-                    <div className="authorName">{this.props.authorData.name}</div>
+                    <Link to = "/author_articles_list"> <div className="authorName">{this.props.authorData.name}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articlesWritten">
