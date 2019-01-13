@@ -16,6 +16,7 @@ import './App.css';
 import { fetchGreeting, fetchUserLoggedIn, logout } from './connect/connectService';
 
 import EventsPage from './pages/EventsPage/index';
+import EventArticlesPage from './pages/EventArticlesPage/index';
 import ArticlesPage from './pages/ArticlesPage/index';
 import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
@@ -100,7 +101,8 @@ class App extends Component {
 						<Link to="/user"><Icon type="user" />{this.state.userData.username}<img src={logouser} className="user-logo" alt="logo" /></Link>
 					</Menu.Item>}
 				</Menu>
-				<Route path="/events_articles" component={EventsPage} />
+				<Route exact path="/" component={EventsPage} />
+				<Route path="/eventsArticles" component={EventArticlesPage} />
 				<Route path="/articles" component={ArticlesPage} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={ReviewersPage} />

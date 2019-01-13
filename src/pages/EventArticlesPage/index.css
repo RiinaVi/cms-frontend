@@ -1,4 +1,4 @@
-.EventsPage {
+.EventArticlePage {
     width: 100%;
 }
 
@@ -10,17 +10,17 @@
     border-right: 1px solid gray;
 }
 
-.eventName {
+.eventArticleName {
     font-size: 33px;
     overflow: hidden;
     padding-right: 20px;
 }
 
-.eventInfo, .authorActivities {
+.eventArticleInfo, .authorActivities {
     flex-shrink: 0;
 }
 
-.eventInfo {
+.eventArticleInfo {
     width: 30%;
     min-width: 320px;
     display: flex;
@@ -28,53 +28,52 @@
 
 }
 
-.eventItem{
+.eventArticleItem{
     padding-left: 30px;
     padding-right: 20px;
     display: flex;
     height: auto;
     flex-wrap: wrap;
-    cursor: pointer;
 }
 
-.eventPage_chosenAuthor{
+.eventArticlePage_chosenAuthor{
     width: 30%;
     margin-right: 10px;
     font-size: 33px;
     display: inline-flex;
     flex-direction: column;
 }
-.eventPage_articleTitle{
+.eventArticlePage_articleTitle{
     width: 35%;
     margin-right: 10px;
     font-size: 33px;
 
 }
-.eventPage_date{
+.eventArticlePage_date{
     flex-grow: 2;
     margin-right: 10px;
     font-size: 18px;
 
 }
-.eventPage_rating{
+.eventArticlePage_rating{
     margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.eventPage_image{
+.eventArticlePage_download{
     text-align: center;
     flex-grow: 1;
 }
-.eventPage_download a:not(:hover){
+.eventArticlePage_download a:not(:hover){
     color: currentColor;
 }
-.eventPage_download svg{
+.eventArticlePage_download svg{
     height: 35px;
     width: 35px;
 }
 
-.eventPage_rating_stars{
+.eventArticlePage_rating_stars{
     font-size: 15px;
     vertical-align: middle;
     padding-left: 15px;

@@ -9,6 +9,9 @@ class EventItem extends Component {
         const organizer = this.props.eventData.organizer;
         return (
             <div onClick={() => this.props.history.push(`/conferences/${this.props.eventData.conferenceID}`)} className="eventItem tableItem">
+                <div className="eventPage_image">
+                    <Icon type="home" />
+                </div>
                 <div className="eventPage_chosenAuthor">
                     {!!organizer && `${organizer.firstName} ${organizer.lastName}`}
                 </div>
@@ -17,11 +20,6 @@ class EventItem extends Component {
                 </div>
                 <div className="eventPage_date"><span className="eventPage_date_text">{this.props.eventData.startDate}</span></div>
                 <div className="eventPage_date"><span className="eventPage_date_text">{this.props.eventData.finishDate}</span></div>
-                <div className="eventPage_download">
-                    <a href="#">
-                        <Icon type="download" />
-                    </a>
-                </div>
             </div>
         );
     }
