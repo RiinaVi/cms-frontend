@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Conference.css';
 import { fetchSingleConference } from '../../connect/connectService';
 import { Button } from 'antd';
-import {withRouter, Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Conference extends Component {
 	constructor(props) {
@@ -50,7 +50,7 @@ class Conference extends Component {
           {description}
         </div>
 
-        <Link to="/eventsArticles">See the list of all Articles</Link>
+        <a href="/events_articles">See the list of all Articles</a>
         <br />
         <a href="#">See the session plan</a>
 

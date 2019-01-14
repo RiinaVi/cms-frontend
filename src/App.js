@@ -16,7 +16,6 @@ import './App.css';
 import { fetchGreeting, fetchUserLoggedIn, logout } from './connect/connectService';
 
 import EventsPage from './pages/EventsPage/index';
-import EventArticlesPage from './pages/EventArticlesPage/index';
 import ArticlesPage from './pages/ArticlesPage/index';
 import AuthPage from './pages/AuthPage/index';
 import AuthorsPage from './pages/AuthorsPage/index';
@@ -28,6 +27,7 @@ import EditConference from './pages/ConferencePage/EditConference';
 import ArticlesReviewsPage from './pages/ArticlesReviewsPage/index';
 import ReviewersReviewsPage from './pages/ReviewersReviewsPage/index';
 import AuthorsArticlesPage from './pages/AuthorsArticlesPage/index';
+import UploadArticlePage from './pages/UploadArticlePage/index';
 import { saveUser } from './connect/requestTools';
 
 
@@ -60,6 +60,7 @@ class App extends Component {
 	onLogoutClick = () => {
 		logout().then(responseJson => {
 			this.setState({userData: null})
+			
 		}).catch(error => console.log(error));
 	}
 	
@@ -95,26 +96,26 @@ class App extends Component {
 						<Link to="/login"><Icon type="login" />Login</Link>
 					</Menu.Item>}
 					{!!this.state.userData && <Menu.Item key="/logout" className="menuItem" onClick={this.onLogoutClick}>
-					<Icon type="logout" />Logout
+					<Link to="/login"><Icon type="logout" />Logout</Link>
 					</Menu.Item>}
 					{!!this.state.userData && <Menu.Item key="/user" className="menuItem">
 						<Link to="/user"><Icon type="user" />{this.state.userData.username}<img src={logouser} className="user-logo" alt="logo" /></Link>
 					</Menu.Item>}
 				</Menu>
-				<Route exact path="/" component={EventsPage} />
-				<Route path="/eventsArticles" component={EventArticlesPage} />
-				<Route path="/articles" component={ArticlesPage} />
+				<Route path="/events_articles" component={EventsPage} />
+				<Route path="/articles" component={() => <ArticlesPage userData={this.state.userData}/>} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={ReviewersPage} />
 				<Route path="/login" component={() => <AuthPage onLoggedIn={this.checkUserData}/>} />
-				<Route path="/user" component={() => <UserPage userData = {this.state.userData}/>} />
-				<Route path="/userEdit" component={UserEditPage} />
+				<Route path="/user" component={() => <UserPage userData={this.state.userData}/>} />
+				<Route path="/userEdit" component={() => <UserEditPage userData={this.state.userData}/>} />
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData}/>} />
 				<Route path="/conferencesEdit/:id" component={EditConference} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />
+				<Route path="/UploadArticlePage" component={UploadArticlePage} />
 
 			</div>
 		</Router>

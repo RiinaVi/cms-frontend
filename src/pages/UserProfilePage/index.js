@@ -4,17 +4,12 @@ import {withRouter} from "react-router-dom";
 import logo from './user.svg';
 import './style.css';
 
+
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 
 class UserPage extends Component{
-	constructor(props) {
-		super(props);
-		console.log(this.props.userData);
-
-	}
-
 	render(){
 		return(
 			<div>
@@ -59,10 +54,10 @@ class UserPage extends Component{
 							<div className="inform">
 								
 								<div className="text">
-									<h1>{this.props.userData!=null && this.props.userData.username}</h1>
-									<h1><a href={this.props.userData!=null &&`mailto: ${ this.props.userData.emailAddress}`}>{this.props.userData!=null&&this.props.userData.emailAddress}</a></h1>
-									<h1><a href={this.props.userData!=null &&`tel: ${ this.props.userData.contactNumber}`}>{this.props.userData!=null&&this.props.userData.contactNumber}</a></h1>
-									<h1>{this.props.userData!=null && this.props.userData.bio}</h1>
+									Username: <h1>{this.props.userData.username}</h1>
+									E-mail: <h1>{this.props.userData.emailAddress}</h1>
+									Phone number: <h1>{this.props.userData.contactNumber}</h1>
+									Bio: <h1>{this.props.userData.bio}</h1>
 								</div>
 
 								<div className="user"><img src={logo} className="User-logo" alt="logo" /></div>

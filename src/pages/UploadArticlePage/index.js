@@ -1,14 +1,32 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Menu, Icon, Upload, message, Button } from 'antd';
+import {withRouter} from "react-router-dom";
 import logo from './user.svg';
 import './style.css';
-import {Link} from "react-router-dom";
+
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
+const props = {
+  name: 'file',
+  action: '//jsonplaceholder.typicode.com/posts/',
+  headers: {
+    authorization: 'authorization-text',
+  },
+  onChange(info) {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+};
 
-class UserPage extends Component{
+class UploadArticlePage extends Component{
 	render(){
 		return(
 			<div>
@@ -42,26 +60,29 @@ class UserPage extends Component{
 							<Icon type="unlock" />
 							<span>Ask for permission</span>
 						  </Menu.Item>
-						  <Menu.Item>
-							<Link to="/userEdit">
+						  <Menu.Item onClick={() => this.props.history.push("/userEdit")}>
 							<Icon type="edit" />
 							<span>Edit Profile</span>
-							</Link>
 						  </Menu.Item>
 						</Menu>
 					</Sider>
 					<Content className="content">
-						<div className="user_profil_content">
-							<div className="edit">
-								<form>
-									<ul>
-										<li>Username : <input type="text" value={this.props.userData.username} /></li>
-										<li>Avatar : <img src={logo} className="User-logo" alt="logo" /></li>
-										<li>Phone number : <input type="tel" value={this.props.userData.contactNumber} /></li>
-										<li>Bio : <textarea row="18" cols="60" value={this.props.userData.bio}></textarea></li>
-									</ul>
-									<input type="submit" value="Save" className="save" />
-								</form>
+						<div className="upload_article_content">
+							<div className="inform">
+								<div className="text">
+									<form>
+										<ul>
+											<li className="article_name">Article Name: <input type="text" /></li>
+											<li className="choose_file"><Upload {...props}>
+												<Button>
+													<Icon type="upload" /> Choose your article
+												</Button>
+											</Upload></li>
+										</ul>
+										
+										<input type="submit" value="Upload" className="upload" />
+									</form>
+								</div>
 							</div>
 						</div>
 					</Content>
@@ -71,4 +92,4 @@ class UserPage extends Component{
 	}
 }
 
-export default UserPage;
+export default withRouter(UploadArticlePage);

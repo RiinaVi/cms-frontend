@@ -3,6 +3,7 @@ import {Form, Icon, Input, Button, Modal} from 'antd';
 import 'antd/dist/antd.css';
 import NormalRestorePassword from "./RestorePassword";
 import {login} from '../../connect/connectService';
+import {Link} from "react-router-dom";
 
 
 const FormItem = Form.Item;
@@ -89,7 +90,6 @@ class NormalLoginForm extends Component {
                         <Button type="primary" htmlType="submit" className="submit_button login-form-button">
                             Enter
                         </Button>
-
 
                     </FormItem>
                 </Form>

@@ -80,3 +80,10 @@
 .sider {
 	border-right: 1px solid gray;
 }
+
+.upload_button {
+	display: block;
+	width: 100%;
+	margin-top: -20px;
+	margin-bottom: 20px;
+}

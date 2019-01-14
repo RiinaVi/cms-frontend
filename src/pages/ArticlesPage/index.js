@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
-import {withRouter} from "react-router-dom";
-import {List, Layout, Menu, Icon} from 'antd';
+import {withRouter, Link} from "react-router-dom";
+import {List, Layout, Menu, Icon, Button} from 'antd';
 
 import ArticleItem from "./ArticleItem";
 import 'antd/dist/antd.css';
@@ -83,6 +83,11 @@ class ArticlesPage extends Component {
 					</Sider>
 					<Content className="content">
 						<div className="ArticlesPage">
+							{this.props.userData &&
+								<Link to='UploadArticlePage'><Button className="upload_button">
+									<Icon type="upload" />Upload New Article
+								</Button></Link>
+							}
 							<List
 								className="articles_table tableBody"
 								itemLayout="vertical"
