@@ -113,8 +113,12 @@ export const deleteSingleConference = conferenceId => {
   return fetchTemplate(url, httpMethods.DELETE)
 }
 
-export const fetchLatestArticles = () => {
+export const fetchArticlesLastVer = () => {
   const url = `${apiUrlRequest}/articlesLatestVersions`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchConferenceArticlesLastVer = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/articlesVersions`;
   return fetchTemplate(url, httpMethods.GET)
 }
 export const uploadArticle = (file, fileName) => {

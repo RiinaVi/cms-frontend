@@ -70,6 +70,8 @@ class EventArticlesPage extends Component {
 	}
 
 	componentDidMount = () => {
+		// TODO fetchConferenceArticlesLastVer(this.props.match.params.id)
+		
 		let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
 		let table_height = table.getBoundingClientRect().height;
 		table.style.minHeight = table_height + "px";

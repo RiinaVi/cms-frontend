@@ -104,7 +104,6 @@ class App extends Component {
 					</Menu.Item>}
 				</Menu>
 				<Route exact path="/" component={EventsPage} />
-				<Route path="/eventsArticles" component={EventArticlesPage} />
 				<Route path="/articles" component={() => <ArticlesPage userData={this.state.userData}/>} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/reviewers" component={ReviewersPage} />
@@ -114,6 +113,7 @@ class App extends Component {
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData}/>} />
 				<Route path="/conferencesEdit/:id" component={EditConference} />
+				<Route path="/conferencesArticles/:id" component={EventArticlesPage} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />

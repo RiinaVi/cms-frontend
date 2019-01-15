@@ -6,7 +6,7 @@ import {List, Layout, Menu, Icon, Button} from 'antd';
 import ArticleItem from "./ArticleItem";
 import 'antd/dist/antd.css';
 import './index.css';
-import { fetchLatestArticles } from '../../connect/connectService';
+import { fetchArticlesLastVer } from '../../connect/connectService';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -21,7 +21,7 @@ class ArticlesPage extends Component {
 	}
 
 	componentDidMount = () => {
-		fetchLatestArticles().then(responseJson => {
+		fetchArticlesLastVer().then(responseJson => {
 			this.setState({data: responseJson})
 		}).catch(error => console.log(error));
 

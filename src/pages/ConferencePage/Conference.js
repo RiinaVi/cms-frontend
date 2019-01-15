@@ -50,7 +50,7 @@ class Conference extends Component {
           {description}
         </div>
 
-        <Link to="/eventsArticles">See the list of all Articles</Link>
+        <Link to={`/conferencesArticles/${this.props.match.params.id}`}>See the list of all Articles</Link>
         <br />
         <a href="#">See the session plan</a>
 
