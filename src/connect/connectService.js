@@ -42,7 +42,7 @@ const fetchTemplate = (urlDomain, method, paramsData, isFile = false) => {
     console.log(response)
     if (response.status >= 200 && response.status < 300) {
       const contentType = response.headers.get('Content-Type');
-      let result = !!contentType && contentType.includes('application/json') ? response.json() : contentType.includes('application/pdf') ? response.blob() : null;
+      let result = !!contentType && contentType.includes('application/json') ? response.json() : !!contentType && contentType.includes('application/pdf') ? response.blob() : null;
       return result;
     } else {
       let error = new Error(response.statusText || response.status);
