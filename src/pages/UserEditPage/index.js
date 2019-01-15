@@ -55,10 +55,10 @@ class UserPage extends Component{
 							<div className="edit">
 								<form>
 									<ul>
-										<li>Username : <input type="text" value={this.props.userData.username} /></li>
+										<li>Username : <input type="text" value={!!this.props.userData && this.props.userData.username} /></li>
 										<li>Avatar : <img src={logo} className="User-logo" alt="logo" /></li>
-										<li>Phone number : <input type="tel" value={this.props.userData.contactNumber} /></li>
-										<li>Bio : <textarea row="18" cols="60" value={this.props.userData.bio}></textarea></li>
+										<li>Phone number : <input type="tel" value={!!this.props.userData && this.props.userData.contactNumber} /></li>
+										<li>Bio : <textarea row="18" cols="60" value={!!this.props.userData && this.props.userData.bio}></textarea></li>
 									</ul>
 									<input type="submit" value="Save" className="save" />
 								</form>
