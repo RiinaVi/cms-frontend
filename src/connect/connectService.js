@@ -9,27 +9,40 @@ const httpMethods = {
 };
 const apiUrlRequest = config.apiUrl;
 
-const fetchTemplate = (urlDomain, method, paramsData) => {
+const fetchTemplate = (urlDomain, method, paramsData, isFile = false) => {
   let url = urlDomain;
-  let requestSettings = {
+  let formData = null;
+  if (isFile) {
+    formData = new FormData();
+    formData.append("file", paramsData.file);
+    formData.append("fileName", paramsData.fileName);
+  }
+  let requestSettings = !isFile ? {
     'method': method,
     'credentials': 'include', //If something not works, comment it.....
     'headers': {
       'Content-type': 'application/json'
     }
+  } : {
+    'method': method,
+    'credentials': 'include', //If something not works, comment it.....
+    
+    // 'headers': {
+    //   'Content-type': 'multipart/form-data'
+    // }
   };
   if(paramsData !== undefined){
-    if(method === httpMethods.GET)
+    if (method === httpMethods.GET)
       url = createUrl(urlDomain, paramsData);
     else if (method === httpMethods.POST || method === httpMethods.PUT)
-      requestSettings.body = JSON.stringify(paramsData);
+      requestSettings.body = isFile ? formData : JSON.stringify(paramsData);
   }
   console.log(requestSettings);
   return fetch(url, requestSettings).then(response => {
     console.log(response)
     if (response.status >= 200 && response.status < 300) {
       const contentType = response.headers.get('Content-Type');
-      let result = !!contentType && contentType.includes('application/json') ? response.json() : null;
+      let result = !!contentType && contentType.includes('application/json') ? response.json() : contentType.includes('application/pdf') ? response.blob() : null;
       return result;
     } else {
       let error = new Error(response.statusText || response.status);
@@ -100,8 +113,19 @@ export const deleteSingleConference = conferenceId => {
   return fetchTemplate(url, httpMethods.DELETE)
 }
 
-export const fetchArticles = () => {
-  const url = `${apiUrlRequest}/articles`;
+export const fetchLatestArticles = () => {
+  const url = `${apiUrlRequest}/articlesLatestVersions`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const uploadArticle = (file, fileName) => {
+  const params = {
+    file: file,
+    fileName: fileName
+  };
+  const url = `${apiUrlRequest}/uploadFile`;
+  return fetchTemplate(url, httpMethods.POST, params, true)
+}
+export const downloadArticle = url => {
   return fetchTemplate(url, httpMethods.GET)
 }
 

@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Layout, Menu, Icon, Upload, message, Button } from 'antd';
 import {withRouter} from "react-router-dom";
 import logo from './user.svg';
+import {config} from '../../config';
 import './style.css';
+import { uploadArticle } from '../../connect/connectService';
 
 
 const { Content, Sider } = Layout;
@@ -10,7 +12,7 @@ const SubMenu = Menu.SubMenu;
 
 const props = {
   name: 'file',
-  action: '//jsonplaceholder.typicode.com/posts/',
+  action: `${config.apiUrl}/uploadFile`,
   headers: {
     authorization: 'authorization-text',
   },
@@ -27,6 +29,19 @@ const props = {
 };
 
 class UploadArticlePage extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			articleName: ''
+		}
+	}
+
+	customRequest = ({ onSuccess, onError, file }) => {
+		uploadArticle(file, this.state.articleName).then(responseJson => {
+			onSuccess(null, file);
+		}).catch(error => onError());
+  };
+
 	render(){
 		return(
 			<div>
@@ -72,8 +87,8 @@ class UploadArticlePage extends Component{
 								<div className="text">
 									<form>
 										<ul>
-											<li className="article_name">Article Name: <input type="text" /></li>
-											<li className="choose_file"><Upload {...props}>
+											<li className="article_name">Article Name: <input type="text" value={this.state.articleName} onChange={e => this.setState({articleName: e.target.value})} /></li>
+											<li className="choose_file"><Upload {...props} customRequest={this.customRequest}>
 												<Button>
 													<Icon type="upload" /> Choose your article
 												</Button>
