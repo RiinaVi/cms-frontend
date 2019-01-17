@@ -1,0 +1,45 @@
+.grid {
+  border: 1px solid #000;
+  float: right;
+  height: 100px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  grid-template-rows: 50px 50px;
+  margin-bottom: 20px;
+}
+
+.sessionItem {
+  border: 1px solid #000;
+  background: #b8ecf9;
+  color: white;
+
+  padding: 2px;
+}
+
+.sessionItem > h6 {
+  margin-bottom: 0px;
+  color: black;
+}
+.sessionItem > .seshTitle {
+  font-weight: 700;
+}
+
+.dateShow {
+  float: left;
+  width: 15%;
+  height: 99px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
+.hideSession {
+  visibility: hidden;
+}
+.sessionItem:hover > h6 {
+  visibility: visible;
+}
+
+.sessionItem:hover {
+  grid-row: 1 / span 2 !important;
+  z-index: 1;
+}
