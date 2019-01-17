@@ -1,0 +1,34 @@
+.grid {
+  border: 1px solid #000;
+  float: right;
+  height: 100px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  margin-bottom: 20px;
+}
+
+.sessionItem {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background: #b8ecf9;
+  color: white;
+  height: 99px;
+  padding: 2px;
+}
+
+.sessionItem > h6 {
+  margin-bottom: 0px;
+}
+.sessionItem > .seshTitle {
+  font-weight: 700;
+}
+
+.dateShow {
+  float: left;
+  width: 15%;
+  height: 99px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
