@@ -28,7 +28,7 @@ class SessionGrid extends Component {
     let htmlReturn = `
     <div class="dateShow">
     Day ${this.props.dayNum}: ${this.props.date.getDate()}/
-    ${this.props.date.getMonth()}/${this.props.date.getFullYear()}
+    ${this.props.date.getMonth()+1}/${this.props.date.getFullYear()}
     </div>
     <div class="grid">
     `;

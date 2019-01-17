@@ -52,7 +52,7 @@ class Conference extends Component {
 
         <Link to={`/conferencesArticles/${this.props.match.params.id}`}>See the list of all Articles</Link>
         <br />
-        <a href="#">See the session plan</a>
+        <Link to={`/conferencesSessions/${this.props.match.params.id}`}>See the session plan</Link>
 
         {!!this.props.userData && this.props.userData.role === 'admin' && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
         <Button type='primary' size='large'>Add to my Events</Button>
