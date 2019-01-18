@@ -13,7 +13,7 @@ import history from './history';
 import logo from './logo.svg';
 import logouser from'./pages/UserProfilePage/user.svg'
 import './App.css';
-import { fetchGreeting, fetchUserLoggedIn, logout } from './connect/connectService';
+import { fetchGreeting, fetchUserLoggedIn, logout, fetchUserConferenceRoles } from './connect/connectService';
 
 import EventsPage from './pages/EventsPage/index';
 import EventArticlesPage from './pages/EventArticlesPage/index';
@@ -42,7 +42,11 @@ class App extends Component {
 		super(props);
 		this.state = { 
 			current: history.location.pathname,
-			userData: null
+			userData: null,
+			conferenceRoles: {
+				conferenceId: null,
+				roles: null
+			}
 		};
 	}
 
@@ -59,6 +63,15 @@ class App extends Component {
 		}).catch(error => console.log(error));
 	}
 
+	checkConferenceRoles = requireConfId => {
+		const currConfID = this.state.conferenceRoles.conferenceId;
+		if (currConfID === null || currConfID !== requireConfId) {
+			fetchUserConferenceRoles(requireConfId).then(responseJson => {
+				this.setState({conferenceRoles: {conferenceId: !responseJson ? null : requireConfId, roles: !responseJson ? null : responseJson}})
+			}).catch(error => console.log(error));
+		}
+	}
+
 	onLogoutClick = () => {
 		logout().then(responseJson => {
 			this.setState({userData: null})
@@ -73,6 +86,8 @@ class App extends Component {
 	}
 
 	render() {
+		const userRolesProps = { userRoles: this.state.conferenceRoles.roles, onCheckRoles: this.checkConferenceRoles };
+
 		return (
 		<Router history={history}>
 			<div className="page">
@@ -112,10 +127,10 @@ class App extends Component {
 				<Route path="/user" component={() => <UserPage userData={this.state.userData}/>} />
 				<Route path="/userEdit" component={() => <UserEditPage userData={this.state.userData}/>} />
 				<Route path="/register" component={() => <AuthPage register/>} />
-				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData}/>} />
-				<Route path="/conferencesEdit/:id" component={EditConference} />
-				<Route path="/conferencesArticles/:id" component={EventArticlesPage} />
-				<Route path="/conferencesSessions/:id" component={SessionPage} />
+				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData} {...userRolesProps}/>} />
+				<Route path="/conferencesEdit/:id" component={() => <EditConference userData={this.state.userData} {...userRolesProps} />} />
+				<Route path="/conferencesArticles/:id" component={() => <EventArticlesPage userData={this.state.userData} {...userRolesProps}/>} />
+				<Route path="/conferencesSessions/:id" component={() => <SessionPage userData={this.state.userData} {...userRolesProps}/>} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />

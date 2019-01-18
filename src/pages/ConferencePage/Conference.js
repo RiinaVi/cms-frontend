@@ -14,6 +14,7 @@ class Conference extends Component {
 	}
 
   componentDidMount = () => {
+    this.props.onCheckRoles(this.props.match.params.id);
 		fetchSingleConference(this.props.match.params.id).then(responseJson => {
 			this.setState({conference: responseJson})
 		}).catch(error => console.log(error));

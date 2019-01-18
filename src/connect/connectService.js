@@ -74,6 +74,11 @@ export const fetchGreeting = () => {
   return fetchTemplate(url, httpMethods.GET, params);
 }
 
+export const fetchUserConferenceRoles = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/role/user`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+
 export const fetchUserLoggedIn = () => {
   const url = `${apiUrlRequest}/user`;
   return fetchTemplate(url, httpMethods.GET)
