@@ -14,7 +14,7 @@ class Conference extends Component {
 	}
 
   componentDidMount = () => {
-    this.props.onCheckRoles(this.props.match.params.id);
+    this.props.onCheckAttendance(this.props.match.params.id);
 		fetchSingleConference(this.props.match.params.id).then(responseJson => {
 			this.setState({conference: responseJson})
 		}).catch(error => console.log(error));
@@ -56,9 +56,9 @@ class Conference extends Component {
         <br />
         <Link to={`/conferencesSessions/${this.props.match.params.id}`}>See the session plan</Link>
 
-        {hasUserAnyRole(this.props.userData, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
-        {hasUserAnyRole(this.props.userData, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
-        <Button type='primary' size='large'>Add to my Events</Button>
+        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
+        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
+        {this.props.userAttendance && this.props.userAttendance[0].attendance === 1 ? <Button size='large'>Remove from my Events</Button> : <Button type='primary' size='large'>Add to my Events</Button>}
       </div>
     );
   }

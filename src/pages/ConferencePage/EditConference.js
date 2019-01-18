@@ -20,6 +20,7 @@ class EditConference extends Component {
   }
   
   componentDidMount = () => {
+    this.props.onCheckAttendance(this.props.match.params.id);
 		fetchSingleConference(this.props.match.params.id).then(responseJson => {
 			this.setState({
         conference: responseJson, 

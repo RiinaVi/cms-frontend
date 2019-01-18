@@ -1,11 +1,11 @@
 export const roles = {
-  ORDINARY: 'O',
-  AUTHOR: 'A',
-  REVIEWER: 'R',
-  EDITOR: 'E',
-  CONF_ORGANIZER: 'C'
+  ORDINARY: 'attendee',
+  AUTHOR: 'author',
+  REVIEWER: 'reviewer',
+  EDITOR: 'editor',
+  CONF_ORGANIZER: 'organizer'
 }
 
-export const hasUserAnyRole = (userData, ...requiredRoles) => {
-  return userData && requiredRoles.some(requireRole => userData.role.includes(requireRole));
+export const hasUserAnyRole = (userAttendance, ...requiredRoles) => {
+  return userAttendance && userAttendance.some(attendance => requiredRoles.find(attendance.role));
 }
