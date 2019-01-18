@@ -125,7 +125,6 @@ class EditConference extends Component {
           </Form.Item>
 
           <Button size='large' onClick={() => this.props.history.push(`/conferences/${this.props.match.params.id}`)}>Cancel</Button>
-          <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>
           <Button type='primary' size='large' htmlType='submit' loading={this.state.loadingSave}>Save</Button>
         </Form>
       </div>

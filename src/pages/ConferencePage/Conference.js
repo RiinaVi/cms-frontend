@@ -3,6 +3,7 @@ import './Conference.css';
 import { fetchSingleConference } from '../../connect/connectService';
 import { Button } from 'antd';
 import {withRouter, Link} from "react-router-dom";
+import { hasUserAnyRole, roles } from '../../utils/security';
 
 class Conference extends Component {
 	constructor(props) {
@@ -54,7 +55,8 @@ class Conference extends Component {
         <br />
         <Link to={`/conferencesSessions/${this.props.match.params.id}`}>See the session plan</Link>
 
-        {!!this.props.userData && this.props.userData.role === 'admin' && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
+        {hasUserAnyRole(this.props.userData, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
+        {hasUserAnyRole(this.props.userData, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
         <Button type='primary' size='large'>Add to my Events</Button>
       </div>
     );
