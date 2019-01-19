@@ -37,9 +37,7 @@ const fetchTemplate = (urlDomain, method, paramsData, isFile = false) => {
     else if (method === httpMethods.POST || method === httpMethods.PUT)
       requestSettings.body = isFile ? formData : JSON.stringify(paramsData);
   }
-  console.log(requestSettings);
   return fetch(url, requestSettings).then(response => {
-    console.log(response)
     if (response.status >= 200 && response.status < 300) {
       const contentType = response.headers.get('Content-Type');
       let result = !!contentType && contentType.includes('application/json') ? response.json() : !!contentType && contentType.includes('application/pdf') ? response.blob() : null;
