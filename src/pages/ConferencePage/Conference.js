@@ -58,7 +58,7 @@ class Conference extends Component {
 
         {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
         {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
-        {this.props.userAttendance && this.props.userAttendance[0].attendance === 1 ? <Button size='large'>Remove from my Events</Button> : <Button type='primary' size='large'>Add to my Events</Button>}
+        {this.props.userAttendance && this.props.userAttendance.length > 0 && this.props.userAttendance[0].attendance === 1 ? <Button size='large'>Remove from my Events</Button> : <Button type='primary' size='large'>Add to my Events</Button>}
       </div>
     );
   }

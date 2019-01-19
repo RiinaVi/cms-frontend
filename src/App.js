@@ -58,6 +58,7 @@ class App extends Component {
 	}
 
 	checkUserData = () => {
+		this.setState({conferenceAttendance: {conferenceId: null, roles: null}});
 		fetchUserLoggedIn().then(responseJson => {
 			this.setState({userData: !responseJson ? null : responseJson})
 		}).catch(error => console.log(error));
@@ -67,15 +68,14 @@ class App extends Component {
 		const currConfID = this.state.conferenceAttendance.conferenceId;
 		if (currConfID === null || currConfID !== requireConfId) {
 			fetchUserConferenceAttendance(requireConfId).then(responseJson => {
-				this.setState({conferenceAttendance: {conferenceId: !responseJson ? null : requireConfId, roles: !responseJson ? null : responseJson}})
+				this.setState({conferenceAttendance: {conferenceId: requireConfId, roles: responseJson}})
 			}).catch(error => console.log(error));
 		}
 	}
 
 	onLogoutClick = () => {
 		logout().then(responseJson => {
-			this.setState({userData: null})
-			
+			this.setState(prevState => ({userData: null, conferenceAttendance: {...prevState.conferenceAttendance, roles: null}}))
 		}).catch(error => console.log(error));
 	}
 	
