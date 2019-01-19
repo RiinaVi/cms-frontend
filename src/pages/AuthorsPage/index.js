@@ -7,86 +7,27 @@ import AuthorItem from "./AuthorItem";
 
 import 'antd/dist/antd.css';
 import './index.css';
+import { fetchAuthors } from '../../connect/connectService';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class AuthorsPage extends Component {
-
-    constructor(props) {
-        super(props);
-        this.data = [
-            {
-                "profile_image_url": "https://placehold.it/50x50",
-                "name": "John Doe",
-                "articles_count": 500,
-                "most_recent": "Article Title",
-                "joined": 20,
-                "average": 3.0
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 3.0
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum2",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 1.5
-            },
-            {
-                "profile_image_url": "https://placehold.it/50x50",
-                "name": "Lorem Ipsum3",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": .5
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum4",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 3.5
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum5",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 1.5
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum6",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 1.5
-            },
-            {
-                "profile_image_url": null,
-                "name": "Lorem Ipsum7",
-                "articles_count": 140,
-                "most_recent": "Lorem ipsum dolor.",
-                "joined": 10,
-                "average": 1.5
-            }
-        ];
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			authorsData: []
+		}
+	}
 
     componentDidMount = () => {
         let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
         let table_height = table.getBoundingClientRect().height;
         table.style.minHeight = table_height + "px";
+
+        fetchAuthors().then(responseJson => {
+			this.setState({authorsData: responseJson ? responseJson : []})
+		}).catch(error => console.log(error));
     };
 
     render() {
@@ -140,9 +81,9 @@ class AuthorsPage extends Component {
 									},
 									pageSize: 5,
 								}}
-								dataSource={this.data}
-								renderItem={author_data => (
-									<AuthorItem authorData={author_data}/>
+								dataSource={this.state.authorsData}
+								renderItem={authorData => (
+									<AuthorItem authorData={authorData}/>
 								)}
 							/>
 						</div>
