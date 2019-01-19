@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Conference.css';
+import {withRouter} from "react-router-dom";
 import { Button, DatePicker, Form, Input } from 'antd';
 import { fetchSingleConference, updateSingleConference } from '../../connect/connectService';
 import * as moment from 'moment';
@@ -133,4 +134,4 @@ class EditConference extends Component {
   }
 }
 
-export default EditConference;
+export default withRouter(EditConference);

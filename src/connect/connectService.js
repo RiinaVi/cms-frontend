@@ -141,3 +141,11 @@ export const fetchReviews = () => {
   return fetchTemplate(url, httpMethods.GET)
 }
 
+export const fetchConferenceSessions = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchConferencePresentations = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/presentations`;
+  return fetchTemplate(url, httpMethods.GET)
+}

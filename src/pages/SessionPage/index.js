@@ -3,8 +3,27 @@ import './style.css';
 import './grid.css';
 import SessionGrid from './SessionGrid';
 import { sessions } from './data';
+import {withRouter} from "react-router-dom";
+import { fetchConferenceSessions, fetchConferencePresentations } from '../../connect/connectService';
 
 class SessionPlan extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			sessions: [],
+			presentations: []
+		}
+	}
+
+  componentDidMount = () => {
+		fetchConferenceSessions(this.props.match.params.id).then(responseJson => {
+			this.setState({sessions: responseJson})
+		}).catch(error => console.log(error));
+		fetchConferencePresentations(this.props.match.params.id).then(responseJson => {
+			this.setState({presentations: responseJson})
+		}).catch(error => console.log(error));
+  }
+
   render() {
     /*
   
@@ -96,4 +115,4 @@ class SessionPlan extends Component {
   }
 }
 
-export default SessionPlan;
+export default withRouter(SessionPlan);
