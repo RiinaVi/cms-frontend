@@ -124,12 +124,12 @@ export const fetchConferenceArticlesLastVer = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}/articlesVersions`;
   return fetchTemplate(url, httpMethods.GET)
 }
-export const uploadArticle = (file, fileName) => {
+export const uploadArticle = (file, fileName, conferenceId) => {
   const params = {
     file: file,
     fileName: fileName
   };
-  const url = `${apiUrlRequest}/uploadFile`;
+  const url = `${apiUrlRequest}/uploadFile/${conferenceId}`;
   return fetchTemplate(url, httpMethods.POST, params, true)
 }
 export const downloadArticle = url => {

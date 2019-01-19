@@ -3,13 +3,29 @@ import {Layout, Menu, Icon} from 'antd';
 import {withRouter} from "react-router-dom";
 import logo from './user.svg';
 import './style.css';
+import { fetchUserProfile } from '../../connect/connectService';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 
 class UserPage extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			userData: !this.props.match.params.userId ? this.props.userData : null
+		}
+	}
+
+  componentDidMount = () => {
+    this.props.match.params.userId && fetchUserProfile(this.props.match.params.userId).then(responseJson => {
+			this.setState({userData: responseJson})
+		}).catch(error => console.log(error));
+	}
+	
 	render(){
+		const userIdParam = this.props.match.params.userId;
+
 		return(
 			<div>
 				<Layout className="layout">
@@ -53,10 +69,10 @@ class UserPage extends Component{
 							<div className="inform">
 								
 								<div className="text">
-									Username: <h1>{this.props.userData!=null && this.props.userData.username}</h1>
-									E-mail: <h1><a href={this.props.userData!=null &&`mailto: ${ this.props.userData.emailAddress}`}>{this.props.userData!=null&&this.props.userData.emailAddress}</a></h1>
-									Phone number: <h1><a href={this.props.userData!=null &&`tel: ${ this.props.userData.contactNumber}`}>{this.props.userData!=null&&this.props.userData.contactNumber}</a></h1>
-									Bio: <h1>{this.props.userData!=null && this.props.userData.bio}</h1>
+									Username: <h1>{this.state.userData!=null && this.state.userData.username}</h1>
+									E-mail: <h1><a href={this.state.userData!=null &&`mailto: ${ this.state.userData.emailAddress}`}>{this.state.userData!=null&&this.state.userData.emailAddress}</a></h1>
+									Phone number: <h1><a href={this.state.userData!=null &&`tel: ${ this.state.userData.contactNumber}`}>{this.state.userData!=null&&this.state.userData.contactNumber}</a></h1>
+									Bio: <h1>{this.state.userData!=null && this.state.userData.bio}</h1>
 								</div>
 
 								<div className="user"><img src={logo} className="User-logo" alt="logo" /></div>
