@@ -48,12 +48,6 @@ class UserPage extends Component{
 							<Menu.Item key="7">Event 3</Menu.Item>
 							<Menu.Item key="8">Event 4</Menu.Item>
 						  </SubMenu>
-						  <SubMenu key="sub3" title={<span><Icon type="notification" />Information</span>}>
-							<Menu.Item key="9">Information 1</Menu.Item>
-							<Menu.Item key="10">Information 2</Menu.Item>
-							<Menu.Item key="11">Information 3</Menu.Item>
-							<Menu.Item key="12">Information 4</Menu.Item>
-						  </SubMenu>
 						  <Menu.Item>
 							<Icon type="unlock" />
 							<span>Ask for permission</span>
