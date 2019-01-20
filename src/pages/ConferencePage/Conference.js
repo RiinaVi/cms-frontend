@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Conference.css';
 import { fetchSingleConference } from '../../connect/connectService';
-import { Button } from 'antd';
+import { Button, Row, Col } from 'antd';
 import {withRouter, Link} from "react-router-dom";
 import { hasUserAnyRole, roles } from '../../utils/security';
 
@@ -57,18 +57,22 @@ class Conference extends Component {
         <Link to={`/conferencesProceedings/${this.props.match.params.id}`}>List of Articles in Proceedings</Link>
         <br />
         <Link to={`/conferencesSessions/${this.props.match.params.id}`}>Session plan</Link>
-          <br />
-          <Link to={`/conferencesAuthors/${this.props.match.params.id}`}>List of Authors</Link>
-          <br />
-          <Link to={`/conferencesReviewers/${this.props.match.params.id}`}>List of reviewers</Link>
+        <br />
+        <Link to={`/conferencesAuthors/${this.props.match.params.id}`}>List of Authors</Link>
+        <br />
+        <Link to={`/conferencesReviewers/${this.props.match.params.id}`}>List of reviewers</Link>
 
-        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
-        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
-        {this.props.userData && (this.props.userAttendance && this.props.userAttendance.length > 0 && this.props.userAttendance[0].attendance ? 
-          <Button size='large'>Remove from my Events</Button> 
-          : 
-          <Button type='primary' size='large'>Add to my Events</Button>)
-        }
+        <Row>
+          <Col span={24} style={{ textAlign: 'right', marginBottom: '80px' }}>
+            {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
+            {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}
+            {this.props.userData && (this.props.userAttendance && this.props.userAttendance.length > 0 && this.props.userAttendance[0].attendance ? 
+              <Button size='large'>Remove from my Events</Button> 
+              : 
+              <Button type='primary' size='large'>Add to my Events</Button>)
+            }
+          </Col>
+        </Row>
       </div>
     );
   }
