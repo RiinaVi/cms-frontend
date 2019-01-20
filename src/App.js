@@ -31,6 +31,8 @@ import AuthorsArticlesPage from './pages/AuthorsArticlesPage/index';
 import UploadArticlePage from './pages/UploadArticlePage/index';
 import { saveUser } from './connect/requestTools';
 import SessionPage from './pages/SessionPage';
+import ConferenceRolesPage from './pages/ConferenceRolesPage';
+import ConferenceProceedingsEdit from './pages/ConferenceProceedingsEdit';
 
 
 const SubMenu = Menu.SubMenu;
@@ -124,6 +126,8 @@ class App extends Component {
 				<Route path="/conferencesAuthors/:id" component={() => <AuthorsPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesReviewers/:id" component={() => <ReviewersPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesSessions/:id" component={() => <SessionPage userData={this.state.userData} {...userAttendanceProps}/>} />
+				<Route path="/conferencesProceedingsEdit/:id" component={() => <ConferenceProceedingsEdit userData={this.state.userData} {...userAttendanceProps}/>} />
+				<Route path="/conferencesRoles/:id" component={() => <ConferenceRolesPage userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
 				<Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />

@@ -61,6 +61,10 @@ class Conference extends Component {
         <Link to={`/conferencesAuthors/${this.props.match.params.id}`}>List of Authors</Link>
         <br />
         <Link to={`/conferencesReviewers/${this.props.match.params.id}`}>List of reviewers</Link>
+        <br />
+        <Link to={`/conferencesProceedingsEdit/${this.props.match.params.id}`}>Accept or decline articles in proceedings</Link>
+        <br />
+        <Link to={`/conferencesRoles/${this.props.match.params.id}`}>Edit user roles</Link>
 
         <Row>
           <Col span={24} style={{ textAlign: 'right', marginBottom: '80px' }}>
