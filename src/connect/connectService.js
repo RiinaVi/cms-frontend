@@ -148,6 +148,18 @@ export const fetchReviews = () => {
   const url = `${apiUrlRequest}/reviews`;
   return fetchTemplate(url, httpMethods.GET)
 }
+export const fetchReviewForArticle = articleId => {
+  const url = `${apiUrlRequest}/reviewForArticle/${articleId}`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const addReview = reviewParams => {
+  const url = `${apiUrlRequest}/reviews`;
+  return fetchTemplate(url, httpMethods.POST, reviewParams)
+}
+export const updateReview = (reviewId, reviewParams) => {
+  const url = `${apiUrlRequest}/reviews/${reviewId}`;
+  return fetchTemplate(url, httpMethods.PUT, reviewParams)
+}
 
 export const fetchConferenceSessions = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions`;
