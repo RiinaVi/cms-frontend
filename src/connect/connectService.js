@@ -85,6 +85,10 @@ export const fetchUserProfile = userId => {
   const url = `${apiUrlRequest}/user/${userId}`;
   return fetchTemplate(url, httpMethods.GET)
 }
+export const updateProfile = userDataParams => {
+  const url = `${apiUrlRequest}/user`;
+  return fetchTemplate(url, httpMethods.PUT, userDataParams)
+}
 export const fetchAuthors = () => {
   const url = `${apiUrlRequest}/authors`;
   return fetchTemplate(url, httpMethods.GET)

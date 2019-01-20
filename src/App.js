@@ -115,7 +115,7 @@ class App extends Component {
 				<Route path="/login" component={() => <AuthPage onLoggedIn={this.checkUserData}/>} />
 				<Route path="/user" component={() => <UserPage userData={this.state.userData}/>} />
 				<Route path="/conferenceProfile/:id/:userId" component={() => <UserPage/>} />
-				<Route path="/userEdit" component={() => <UserEditPage userData={this.state.userData}/>} />
+				<Route path="/userEdit" component={() => <UserEditPage userData={this.state.userData} onSaveUserData={this.checkUserData}/>} />
 				<Route path="/register" component={() => <AuthPage register/>} />
 				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/conferencesEdit/:id" component={() => <EditConference userData={this.state.userData} {...userAttendanceProps} />} />

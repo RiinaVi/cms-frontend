@@ -29,3 +29,6 @@ body,html{
 	width: 100px;
 	height: 40px;
 }
+button {
+	margin: 0 !important;
+}
