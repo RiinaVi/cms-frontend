@@ -25,7 +25,7 @@ class AuthorItem extends Component {
             <div className="authorItem tableItem">
                 <div className="authorInfo">
                     <Icon className="userImage" type="user"/>
-                    <Link to={`/conferenceProfile/0/${userData.id}`}> <div className="authorName">{`${userData.firstName} ${userData.lastName}`}</div></Link>
+                    <Link to={`/conferenceProfile/${this.props.conferenceId}/${userData.id}`}> <div className="authorName">{`${userData.firstName} ${userData.lastName}`}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articlesWritten">

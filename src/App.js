@@ -112,9 +112,6 @@ class App extends Component {
 					</Menu.Item>}
 				</Menu>
 				<Route exact path="/" component={EventsPage} />
-				<Route path="/articles" component={() => <ArticlesPage userData={this.state.userData}/>} />
-				<Route path="/authors" component={AuthorsPage} />
-				<Route path="/reviewers" component={ReviewersPage} />
 				<Route path="/login" component={() => <AuthPage onLoggedIn={this.checkUserData}/>} />
 				<Route path="/user" component={() => <UserPage userData={this.state.userData}/>} />
 				<Route path="/conferenceProfile/:id/:userId" component={() => <UserPage/>} />
@@ -123,6 +120,9 @@ class App extends Component {
 				<Route path="/conferences/:id" component={() => <Conference userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/conferencesEdit/:id" component={() => <EditConference userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesArticles/:id" component={() => <EventArticlesPage userData={this.state.userData} {...userAttendanceProps}/>} />
+				<Route path="/conferencesProceedings/:id" component={() => <EventArticlesPage proceedings userData={this.state.userData} {...userAttendanceProps}/>} />
+				<Route path="/conferencesAuthors/:id" component={() => <AuthorsPage userData={this.state.userData} {...userAttendanceProps} />} />
+				<Route path="/conferencesReviewers/:id" component={() => <ReviewersPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesSessions/:id" component={() => <SessionPage userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />

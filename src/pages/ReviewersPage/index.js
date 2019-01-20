@@ -149,7 +149,7 @@ class ReviewersPage extends Component {
 								}}
 								dataSource={this.data}
 								renderItem={author_data => (
-									<ReviewItem authorData={author_data}/>
+									<ReviewItem authorData={author_data} conferenceId={this.props.match.params.id}/>
 								)}
 							/>
 						</div>

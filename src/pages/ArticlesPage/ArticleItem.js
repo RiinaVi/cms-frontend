@@ -15,10 +15,12 @@ class ArticleItem extends Component {
     }
 
     render() {
+        const author = this.props.articleData.article && this.props.articleData.article.userAuthor;
+
         return (
             <div className="articleItem tableItem">
                 <div className="articleInfo">
-                    <Link to="/AuthorArticlesPage"><div className="articleAuthorName">{!!this.props.articleData.article && this.props.articleData.article.authorName}</div></Link>
+                    <Link to={`/conferenceProfile/${this.props.conferenceId}/${author.id}`}><div className="articleAuthorName">{author && `${author.firstName} ${author.lastName}`}</div></Link>
                 </div>
                 <div className="articlesInfo">
                     <div className="articleName">

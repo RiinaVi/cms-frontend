@@ -124,6 +124,10 @@ export const fetchConferenceArticlesLastVer = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}/articlesVersions`;
   return fetchTemplate(url, httpMethods.GET)
 }
+export const fetchConferenceProceedingsLastVer = conferenceId => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/articlesVersions`;
+  return fetchTemplate(url, httpMethods.GET)
+}
 export const uploadArticle = (file, fileName, conferenceId) => {
   const params = {
     file: file,

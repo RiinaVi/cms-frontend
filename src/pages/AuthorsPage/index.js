@@ -20,53 +20,53 @@ class AuthorsPage extends Component {
 		}
 	}
 
-    componentDidMount = () => {
-        let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
-        let table_height = table.getBoundingClientRect().height;
-        table.style.minHeight = table_height + "px";
+	componentDidMount = () => {
+		let table = ReactDOM.findDOMNode(this).querySelector('.ant-spin-container');
+		let table_height = table.getBoundingClientRect().height;
+		table.style.minHeight = table_height + "px";
 
-        fetchAuthors().then(responseJson => {
+		fetchAuthors().then(responseJson => {
 			this.setState({authorsData: responseJson ? responseJson : []})
 		}).catch(error => console.log(error));
-    };
+	};
 
-    render() {
-        return (
+	render() {
+		return (
 			<div>
 				<Layout className="layout">
 					<Sider className="sider">
 						<Menu
-						  mode="inline"
-						  defaultSelectedKeys={['1']}
-						  defaultOpenKeys={['sub1']}
-						  style={{ height: '100%', borderRight: 0 }}
+							mode="inline"
+							defaultSelectedKeys={['1']}
+							defaultOpenKeys={['sub1']}
+							style={{ height: '100%', borderRight: 0 }}
 						>
-						  <SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
+							<SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
 							<Menu.Item key="1">Article 1</Menu.Item>
 							<Menu.Item key="2">Article 2</Menu.Item>
 							<Menu.Item key="3">Article 3</Menu.Item>
 							<Menu.Item key="4">Article 4</Menu.Item>
-						  </SubMenu>
-						  <SubMenu key="sub2" title={<span><Icon type="laptop" />Your Events</span>}>
+							</SubMenu>
+							<SubMenu key="sub2" title={<span><Icon type="laptop" />Your Events</span>}>
 							<Menu.Item key="5">Event 1</Menu.Item>
 							<Menu.Item key="6">Event 2</Menu.Item>
 							<Menu.Item key="7">Event 3</Menu.Item>
 							<Menu.Item key="8">Event 4</Menu.Item>
-						  </SubMenu>
-						  <SubMenu key="sub3" title={<span><Icon type="notification" />Information</span>}>
+							</SubMenu>
+							<SubMenu key="sub3" title={<span><Icon type="notification" />Information</span>}>
 							<Menu.Item key="9">Information 1</Menu.Item>
 							<Menu.Item key="10">Information 2</Menu.Item>
 							<Menu.Item key="11">Information 3</Menu.Item>
 							<Menu.Item key="12">Information 4</Menu.Item>
-						  </SubMenu>
-						  <Menu.Item>
+							</SubMenu>
+							<Menu.Item>
 							<Icon type="unlock" />
 							<span>Ask for permission</span>
-						  </Menu.Item>
-						  <Menu.Item>
+							</Menu.Item>
+							<Menu.Item>
 							<Icon type="edit" />
 							<span>Edit Profile</span>
-						  </Menu.Item>
+							</Menu.Item>
 						</Menu>
 					</Sider>
 					<Content className="content">
@@ -83,15 +83,15 @@ class AuthorsPage extends Component {
 								}}
 								dataSource={this.state.authorsData}
 								renderItem={authorData => (
-									<AuthorItem authorData={authorData}/>
+									<AuthorItem authorData={authorData} conferenceId={this.props.match.params.id}/>
 								)}
 							/>
 						</div>
 					</Content>
 				</Layout>
 			</div>
-        );
-    }
+		);
+	}
 }
 
 export default withRouter(AuthorsPage);
