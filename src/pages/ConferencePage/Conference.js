@@ -52,9 +52,13 @@ class Conference extends Component {
           {description}
         </div>
 
-        <Link to={`/conferencesArticles/${this.props.match.params.id}`}>See the list of all Articles</Link>
+        <Link to={`/conferencesArticles/${this.props.match.params.id}`}>List of Articles</Link>
         <br />
-        <Link to={`/conferencesSessions/${this.props.match.params.id}`}>See the session plan</Link>
+        <Link to={`/conferencesSessions/${this.props.match.params.id}`}>Session plan</Link>
+          <br />
+          <Link to={`/authors/${this.props.match.params.id}`}>List of Authors</Link>
+          <br />
+          <Link to={`/reviewers/${this.props.match.params.id}`}>List of reviewers</Link>
 
         {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit Event</Button>}
         {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button size='large' onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit the plan</Button>}

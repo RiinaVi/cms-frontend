@@ -100,15 +100,7 @@ class App extends Component {
 					<Menu.Item key="/" className="menuItem">
 						<Link to="/"><Icon type="calendar" />Events</Link>
 					</Menu.Item>
-					<Menu.Item key="/authors" className="menuItem">
-						<Link to="/authors"><Icon type="team" />Authors</Link>
-					</Menu.Item>
-					<Menu.Item key="/articles" className="menuItem">
-						<Link to="/articles"><Icon type="snippets" />Articles</Link>
-					</Menu.Item>
-					<Menu.Item key="/reviewers" className="menuItem">
-						<Link to="/reviewers"><Icon type="solution" />Reviewers</Link>
-					</Menu.Item>
+
 					{!this.state.userData && <Menu.Item key="/login" className="menuItem">
 						<Link to="/login"><Icon type="login" />Login</Link>
 					</Menu.Item>}
