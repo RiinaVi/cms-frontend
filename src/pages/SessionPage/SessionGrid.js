@@ -58,8 +58,9 @@ class SessionGrid extends Component {
     }
     const startRow = timetable[startColumn];
     const rowSpan = midHeight ? 1 : 2;
+    /* I dont know how to set the route properly to get to presentations page*/
     return `
-      <div class="sessionItem" style="grid-column: ${startColumn} / span ${columnSpan};grid-row: ${startRow} / span ${rowSpan}">
+      <div onclick="goToPresentationPage()" class="sessionItem" style="grid-column: ${startColumn} / span ${columnSpan};grid-row: ${startRow} / span ${rowSpan}">
       <h6 class="seshTitle">${title}</h6>
       <h6 class="${midHeight ? 'hideSession' : ''}">${chair}</h6>
       <h6 class="${midHeight ? 'hideSession' : ''}">${room}</h6>
@@ -71,7 +72,7 @@ class SessionGrid extends Component {
     let htmlReturn = `
     <div class="dateShow">
     Day ${this.props.dayNum}: ${this.props.date.getDate()}/
-    ${this.props.date.getMonth()+1}/${this.props.date.getFullYear()}
+    ${this.props.date.getMonth() + 1}/${this.props.date.getFullYear()}
     </div>
     <div class="grid">
     `;
