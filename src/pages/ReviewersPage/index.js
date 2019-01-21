@@ -98,7 +98,6 @@ class ReviewersPage extends Component {
 
     render() {
         return (
-			<div>
 				<Layout className="layout">
 					<Sider className="sider">
 						<Menu
@@ -155,7 +154,6 @@ class ReviewersPage extends Component {
 						</div>
 					</Content>
 				</Layout>
-			</div>
         );
     }
 }

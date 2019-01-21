@@ -16,7 +16,6 @@ const SubMenu = Menu.SubMenu;
 class AuthPage extends Component{
 	render(){
 		return(
-			<div>
 				<Layout>
 					<Sider className="sider">
 						<Menu
@@ -63,7 +62,6 @@ class AuthPage extends Component{
 						</div>
 					</Content>
 				</Layout>
-			</div>
 		);
 	}
 }

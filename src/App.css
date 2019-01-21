@@ -14,3 +14,14 @@
 	padding-left: 65px;
 	padding-right: 65px;
 }
+
+#root, .page{
+    height: 100%;
+}
+.page{
+    display: flex;
+    flex-direction: column;
+}
+.ant-layout-sider{
+    background: none;
+}
