@@ -45,11 +45,11 @@ class Conference extends Component {
                         style={{height: '100%', borderRight: 0}}
                     >
 
-                        <Menu.Item>
+                        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR, roles.REVIEWER) && <Menu.Item>
                             <Icon type="profile" />
                             <Link to={`/conferencesArticles/${this.props.match.params.id}`}>List of all uploaded Articles</Link>
 
-                        </Menu.Item>
+                        </Menu.Item>}
                         <Menu.Item>
                             <Icon type="file-sync" />
                             <Link to={`/conferencesProceedings/${this.props.match.params.id}`}>List of Articles in
@@ -61,26 +61,20 @@ class Conference extends Component {
                             <Link to={`/conferencesSessions/${this.props.match.params.id}`}>Session plan</Link>
                         </Menu.Item>
 
-                        <Menu.Item>
+                        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Menu.Item>
                             <Icon type="team" />
                             <Link to={`/conferencesAuthors/${this.props.match.params.id}`}>List of Authors</Link>
-                        </Menu.Item>
+                        </Menu.Item>}
 
-                        <Menu.Item>
+                        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Menu.Item>
                             <Icon type="file-search" />
                             <Link to={`/conferencesReviewers/${this.props.match.params.id}`}>List of reviewers</Link>
-                        </Menu.Item>
+                        </Menu.Item>}
 
-                        <Menu.Item>
-                            <Icon type="solution" />
-                                <Link to={`/conferencesProceedingsEdit/${this.props.match.params.id}`}>Accept or decline articles in
-                                proceedings</Link>
-                        </Menu.Item>
-
-                        <Menu.Item>
+                        {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Menu.Item>
                             <Icon type="edit" />
                             <Link to={`/conferencesRoles/${this.props.match.params.id}`}>Edit user roles</Link>
-                        </Menu.Item>
+                        </Menu.Item>}
                     </Menu>
                 </Sider>
                 <div className="container conferenceContainer">
@@ -111,7 +105,7 @@ class Conference extends Component {
                             {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) &&
                             <Button size='large'
                                     onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit
-                                the plan</Button>}
+                                the plan and proceedings</Button>}
                             {this.props.userData && (this.props.userAttendance && this.props.userAttendance.length > 0 && this.props.userAttendance[0].attendance ?
                                 <Button size='large'>Remove from my Events</Button>
                                 :

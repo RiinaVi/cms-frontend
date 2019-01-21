@@ -55,7 +55,7 @@ class UserPage extends Component{
 						defaultOpenKeys={['sub1']}
 						style={{ height: '100%', borderRight: 0 }}
 					>
-						<SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
+						{/* <SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
 						<Menu.Item key="1">Article 1</Menu.Item>
 						<Menu.Item key="2">Article 2</Menu.Item>
 						<Menu.Item key="3">Article 3</Menu.Item>
@@ -76,7 +76,7 @@ class UserPage extends Component{
 						<Icon type="edit" />
 						<span>Edit Profile</span>
 						</Link>
-						</Menu.Item>
+						</Menu.Item> */}
 					</Menu>
 				</Sider>
 				<Content className="content">

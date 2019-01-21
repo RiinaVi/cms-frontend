@@ -3,7 +3,7 @@ import {Layout, Menu, Icon} from 'antd';
 import {withRouter} from "react-router-dom";
 import logo from './user.svg';
 import './style.css';
-import { fetchUserProfile } from '../../connect/connectService';
+import { fetchUserProfile, fetchConferenceAuthorArticles, fetchConferenceReviewerReviews } from '../../connect/connectService';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -13,7 +13,9 @@ class UserPage extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			userData: !this.props.match.params.userId ? this.props.userData : null
+			userData: !this.props.match.params.userId ? this.props.userData : null,
+			userArticles: [],
+			userReviews: []
 		}
 	}
 
@@ -21,6 +23,13 @@ class UserPage extends Component{
     this.props.match.params.userId && fetchUserProfile(this.props.match.params.userId).then(responseJson => {
 			this.setState({userData: responseJson})
 		}).catch(error => console.log(error));
+		this.props.match.params.userId && this.props.match.params.id && fetchConferenceAuthorArticles(this.props.match.params.id, this.props.match.params.userId).then(responseJson => {
+			this.setState({userArticles: responseJson})
+		}).catch(error => console.log(error));
+		//TODO
+		// this.props.match.params.userId && this.props.match.params.id && fetchConferenceReviewerReviews(this.props.match.params.id, this.props.match.params.userId).then(responseJson => {
+		// 	this.setState({userReviews: responseJson})
+		// }).catch(error => console.log(error));
 	}
 	
 	render(){
@@ -36,7 +45,7 @@ class UserPage extends Component{
 						  defaultOpenKeys={['sub1']}
 						  style={{ height: '100%', borderRight: 0 }}
 						>
-						  <SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
+						  {/* <SubMenu key="sub1" title={<span><Icon type="user" />Read Articles</span>}>
 							<Menu.Item key="1">Article 1</Menu.Item>
 							<Menu.Item key="2">Article 2</Menu.Item>
 							<Menu.Item key="3">Article 3</Menu.Item>
@@ -47,15 +56,19 @@ class UserPage extends Component{
 							<Menu.Item key="6">Event 2</Menu.Item>
 							<Menu.Item key="7">Event 3</Menu.Item>
 							<Menu.Item key="8">Event 4</Menu.Item>
-						  </SubMenu>
-						  <Menu.Item>
+						  </SubMenu> */}
+						  {this.state.userArticles && this.state.userArticles.length > 0 && <Menu.Item>
 							<Icon type="unlock" />
-							<span>Ask for permission</span>
-						  </Menu.Item>
-						  <Menu.Item onClick={() => this.props.history.push("/userEdit")}>
+							<span>Show user articles</span>
+						  </Menu.Item>}
+						  {this.state.userReviews && this.state.userReviews.length > 0 && <Menu.Item>
+							<Icon type="unlock" />
+							<span>Show user reviews</span>
+						  </Menu.Item>}
+						  {!this.props.match.params.userId && <Menu.Item onClick={() => this.props.history.push("/userEdit")}>
 							<Icon type="edit" />
 							<span>Edit Profile</span>
-						  </Menu.Item>
+						  </Menu.Item>}
 						</Menu>
 					</Sider>
 					<Content className="content">

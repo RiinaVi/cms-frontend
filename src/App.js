@@ -126,7 +126,6 @@ class App extends Component {
 				<Route path="/conferencesAuthors/:id" component={() => <AuthorsPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesReviewers/:id" component={() => <ReviewersPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesSessions/:id" component={() => <SessionPage userData={this.state.userData} {...userAttendanceProps}/>} />
-				<Route path="/conferencesProceedingsEdit/:id" component={() => <ConferenceProceedingsEdit userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/conferencesRoles/:id" component={() => <ConferenceRolesPage userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />

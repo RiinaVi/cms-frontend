@@ -97,6 +97,13 @@ export const fetchReviewers = () => {
   const url = `${apiUrlRequest}/reviewers`;
   return fetchTemplate(url, httpMethods.GET)
 }
+export const fetchConferenceAuthorArticles = (conferenceId, authorId) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/authors/${authorId}/articles`;
+  return fetchTemplate(url, httpMethods.GET)
+}
+export const fetchConferenceReviewerReviews = (conferenceId, reviewerId) => {
+  
+}
 
 export const fetchConferences = () => {
   const url = `${apiUrlRequest}/conferences`;
