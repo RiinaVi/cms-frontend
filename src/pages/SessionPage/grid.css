@@ -30,7 +30,8 @@
   width: 15%;
   height: 99px;
   margin-bottom: 20px;
-  padding: 40px;
+  padding: 30px;
+  padding-top: 40px;
 }
 .hideSession {
   visibility: hidden;

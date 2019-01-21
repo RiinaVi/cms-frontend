@@ -32,7 +32,8 @@ class SessionGrid extends Component {
   }
 
   getSessionStartColumn = session => {
-    const { startDate } = session;
+    const { startDateTime } = session;
+    const startDate = new Date(startDateTime);
 
     let columnByHour = startDate.getHours() - 9;
     let columnByMinute = Math.trunc(startDate.getMinutes() / 15);
@@ -40,16 +41,31 @@ class SessionGrid extends Component {
   };
 
   getSessionColumnSpan = session => {
-    const { startDate, endDate } = session;
+    const { startDateTime, endDateTime } = session;
+    const startDate = new Date(startDateTime);
+    const endDate = new Date(endDateTime);
     let diff = (endDate.getTime() - startDate.getTime()) / 1000;
     diff /= 60;
     diff = Math.abs(Math.round(diff));
     return Math.trunc(diff / 15);
   };
 
+  getRooms = session => {
+    let rooms = '';
+    this.props.presentations.forEach(presentation => {
+      if (session.sessionID === presentation.session.sessionID) {
+        rooms += presentation.room;
+        rooms += ', ';
+      }
+    });
+
+    return rooms.substring(0, rooms.length - 2);
+  };
+
   sortSessions = session => {
-    const { title, room, chair } = session;
+    const { name, chairName } = session;
     const { timetable } = this.state;
+    const rooms = this.getRooms(session);
     const columnSpan = this.getSessionColumnSpan(session);
     const startColumn = this.getSessionStartColumn(session);
     let midHeight = false;
@@ -61,9 +77,9 @@ class SessionGrid extends Component {
     /* I dont know how to set the route properly to get to presentations page*/
     return `
       <div onclick="goToPresentationPage()" class="sessionItem" style="grid-column: ${startColumn} / span ${columnSpan};grid-row: ${startRow} / span ${rowSpan}">
-      <h6 class="seshTitle">${title}</h6>
-      <h6 class="${midHeight ? 'hideSession' : ''}">${chair}</h6>
-      <h6 class="${midHeight ? 'hideSession' : ''}">${room}</h6>
+      <h6 class="seshTitle">${name}</h6>
+      <h6 class="${midHeight ? 'hideSession' : ''}">${chairName}</h6>
+      <h6 class="${midHeight ? 'hideSession' : ''}">${rooms}</h6>
       </div>
       `;
   };
@@ -87,7 +103,8 @@ class SessionGrid extends Component {
 SessionGrid.propTypes = {
   dayNum: PropTypes.number.isRequired,
   date: PropTypes.instanceOf(Date).isRequired,
-  sessions: PropTypes.array.isRequired
+  sessions: PropTypes.array.isRequired,
+  presentations: PropTypes.array.isRequired
 };
 
 export default SessionGrid;

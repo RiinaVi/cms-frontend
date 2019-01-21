@@ -32,89 +32,111 @@ class SessionPlan extends Component {
   };
 
   render() {
-    const {
-      startDate,
-      endDate,
-      conferenceName
-    } = this.state.sessions[0].conference;
-    const confDates = [];
-    let confDuration = 0;
-    for (let i = startDate; i <= endDate; i.setDate(i.getDate() + 1)) {
-      confDuration++;
-      let dateObj = {
-        id: confDuration,
-        date: new Date(i.getTime())
-      };
-      confDates.push(dateObj);
+    if (this.state.sessions.length === 0) {
+      return <div />;
+    } else {
+      const {
+        startDate,
+        finishDate,
+        conferenceName
+      } = this.state.sessions[0].conference;
+      console.log(this.state.sessions);
+      const confDates = [];
+      let confDuration = 0;
+      const confStart = new Date(startDate);
+      const confEnd = new Date(finishDate);
+      for (let i = confStart; i <= confEnd; i.setDate(i.getDate() + 1)) {
+        confDuration++;
+        let dateObj = {
+          id: confDuration,
+          date: new Date(i.getTime())
+        };
+        confDates.push(dateObj);
+      }
+
+      /*       const seshTrial = this.state.sessions.filter(
+        session =>
+          new Date(session.startDateTime).getFullYear() ===
+            new Date(2019, 1, 17).getFullYear() &&
+          new Date(session.startDateTime).getMonth() ===
+            new Date(2019, 1, 17).date.getMonth() &&
+          new Date(session.startDateTime).getDate() ===
+            new Date(2019, 1, 17).date.getDate()
+      );
+      console.log('seshTrial');
+      console.log(seshTrial); */
+
+      return (
+        <div style={{ margin: '3%' }}>
+          <h1 className="confTitle">{conferenceName}</h1>
+          <table className="headerTable">
+            <tbody>
+              <tr className="seshTr">
+                <th className="seshTh firstTH" />
+                <th className="seshTh">
+                  <span className="vertical">9:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">10:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">11:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">12:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">13:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">14:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">15:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">16:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">17:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">18:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">19:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">20:00</span>
+                </th>
+                <th className="seshTh">
+                  <span className="vertical">21:00</span>
+                </th>
+
+                <th className="lastTH" />
+              </tr>
+            </tbody>
+          </table>
+          {confDates.map(date => (
+            <SessionGrid
+              key={date.id}
+              dayNum={date.id}
+              date={date.date}
+              sessions={this.state.sessions.filter(
+                session =>
+                  new Date(session.startDateTime).getFullYear() ===
+                    date.date.getFullYear() &&
+                  new Date(session.startDateTime).getMonth() ===
+                    date.date.getMonth() &&
+                  new Date(session.startDateTime).getDate() ===
+                    date.date.getDate()
+              )}
+              presentations={this.state.presentations}
+            />
+          ))}
+        </div>
+      );
     }
-
-    return (
-      <div style={{ margin: '3%' }}>
-        <h1 className="confTitle">Conference Name</h1>
-        <table className="headerTable">
-          <tbody>
-            <tr className="seshTr">
-              <th className="seshTh firstTH" />
-              <th className="seshTh">
-                <span className="vertical">9:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">10:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">11:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">12:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">13:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">14:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">15:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">16:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">17:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">18:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">19:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">20:00</span>
-              </th>
-              <th className="seshTh">
-                <span className="vertical">21:00</span>
-              </th>
-
-              <th className="lastTH" />
-            </tr>
-          </tbody>
-        </table>
-        {confDates.map(date => (
-          <SessionGrid
-            key={date.id}
-            dayNum={date.id}
-            date={date.date}
-            sessions={this.state.sessions.filter(
-              session =>
-                session.startDate.getFullYear() === date.date.getFullYear() &&
-                session.startDate.getMonth() === date.date.getMonth() &&
-                session.startDate.getDate() === date.date.getDate()
-            )}
-            presentations={this.state.presentations}
-          />
-        ))}
-      </div>
-    );
   }
 }
 
