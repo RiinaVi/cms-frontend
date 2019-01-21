@@ -85,14 +85,14 @@ class ArticleItem extends Component {
           {!this.state.reviewCurrent && 'No review'}
         </Modal>
         <Modal
-          title="Add/Edit review"
+          title={`${this.state.reviewCurrent ? 'Edit' : 'Add'} review`}
           visible={this.state.modalEditVisible}
           onOk={this.saveReview}
           onCancel={() => this.setState({modalEditVisible: false})}
           confirmLoading={this.state.saveReviewLoading}
           >
           <Rate allowHalf defaultValue={2.5} value={this.state.reviewEditGrade} onChange={grade => this.setState({reviewEditGrade: grade})} />
-          <Input.TextArea rows={4} value={this.state.reviewEditComment} onChange={grade => this.setState({reviewEditComment: grade})} />
+          <Input.TextArea rows={4} value={this.state.reviewEditComment} onChange={e => this.setState({reviewEditComment: e.target.value})} />
         </Modal>
       </div>
     );
