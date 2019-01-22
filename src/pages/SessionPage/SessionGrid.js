@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './grid.css';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import Session from './Session';
 
 class SessionGrid extends Component {
   constructor(props) {
@@ -50,53 +52,29 @@ class SessionGrid extends Component {
     return Math.trunc(diff / 15);
   };
 
-  getRooms = session => {
-    let rooms = '';
-    this.props.presentations.forEach(presentation => {
-      if (session.sessionID === presentation.session.sessionID) {
-        rooms += presentation.room;
-        rooms += ', ';
-      }
-    });
-
-    return rooms.substring(0, rooms.length - 2);
-  };
-
-  sortSessions = session => {
-    const { name, chairName } = session;
-    const { timetable } = this.state;
-    const rooms = this.getRooms(session);
-    const columnSpan = this.getSessionColumnSpan(session);
-    const startColumn = this.getSessionStartColumn(session);
-    let midHeight = false;
-    for (let i = startColumn - 1; i < startColumn + columnSpan; i++) {
-      if (timetable[i] === 2) midHeight = true;
-    }
-    const startRow = timetable[startColumn];
-    const rowSpan = midHeight ? 1 : 2;
-    /* I dont know how to set the route properly to get to presentations page*/
-    return `
-      <div onclick="goToPresentationPage()" class="sessionItem" style="grid-column: ${startColumn} / span ${columnSpan};grid-row: ${startRow} / span ${rowSpan}">
-      <h6 class="seshTitle">${name}</h6>
-      <h6 class="${midHeight ? 'hideSession' : ''}">${chairName}</h6>
-      <h6 class="${midHeight ? 'hideSession' : ''}">${rooms}</h6>
-      </div>
-      `;
-  };
-
   render() {
-    let htmlReturn = `
-    <div class="dateShow">
-    Day ${this.props.dayNum}: ${this.props.date.getDate()}/
-    ${this.props.date.getMonth() + 1}/${this.props.date.getFullYear()}
-    </div>
-    <div class="grid">
-    `;
-    const { sessions } = this.props;
-    sessions.forEach(session => (htmlReturn += this.sortSessions(session)));
-    htmlReturn += ' </div>';
-
-    return <div dangerouslySetInnerHTML={{ __html: htmlReturn }} />;
+    return (
+      <React.Fragment>
+        <div className="dateShow">
+          Day {this.props.dayNum}: {this.props.date.getDate()}/
+          {this.props.date.getMonth() + 1}/{this.props.date.getFullYear()}
+        </div>
+        <div className="grid">
+          {console.log('estoy aqui')}
+          {this.props.sessions.map(session => (
+            <Session
+              key={session.sessionID}
+              session={session}
+              presentations={this.props.presentations.filter(
+                presentation =>
+                  presentation.session.sessionID === session.sessionID
+              )}
+              timetable={this.state.timetable}
+            />
+          ))}
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
@@ -107,4 +85,4 @@ SessionGrid.propTypes = {
   presentations: PropTypes.array.isRequired
 };
 
-export default SessionGrid;
+export default withRouter(SessionGrid);
