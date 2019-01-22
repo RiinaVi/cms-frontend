@@ -176,3 +176,33 @@ export const fetchConferencePresentations = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}/presentations`;
   return fetchTemplate(url, httpMethods.GET)
 }
+// export const addConferencePresentation = (conferenceId, sessionId, presentation) => {
+//   const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}/presentations`;
+//   return fetchTemplate(url, httpMethods.POST, presentation)
+// }
+// export const updateConferencePresentation = (conferenceId, sessionId, presentation, presentationId) => {
+//   presentation.presentationID = presentationId;
+//   const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}/presentations`;
+//   return fetchTemplate(url, httpMethods.PUT, presentation)
+// }
+export const addConferenceSession = (conferenceId, session) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions`;
+  return fetchTemplate(url, httpMethods.POST, session)
+}
+export const updateConferenceSession = (conferenceId, session, sessionId) => {
+  session.sessionID = sessionId;
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}`;
+  return fetchTemplate(url, httpMethods.PUT, session)
+}
+export const deleteConferenceSession = (conferenceId, sessionId) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}`;
+  return fetchTemplate(url, httpMethods.DELETE)
+} 
+export const saveManyConferencePresentationsForSession = (conferenceId, sessionId, presentations) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}/presentationsMany`;
+  return fetchTemplate(url, httpMethods.POST, presentations)
+}
+export const deleteManyConferencePresentationsForSession = (conferenceId, sessionId, presentationsIds) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/sessions/${sessionId}/presentationsMany`;
+  return fetchTemplate(url, httpMethods.DELETE, presentationsIds)
+}
