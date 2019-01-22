@@ -33,6 +33,7 @@ import { saveUser } from './connect/requestTools';
 import SessionPage from './pages/SessionPage';
 import ConferenceRolesPage from './pages/ConferenceRolesPage';
 import ConferenceProceedingsEdit from './pages/ConferenceProceedingsEdit';
+import PresentationsPage from './pages/PresentationsPage';
 
 
 const SubMenu = Menu.SubMenu;
@@ -126,6 +127,7 @@ class App extends Component {
 				<Route path="/conferencesAuthors/:id" component={() => <AuthorsPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesReviewers/:id" component={() => <ReviewersPage userData={this.state.userData} {...userAttendanceProps} />} />
 				<Route path="/conferencesSessions/:id" component={() => <SessionPage userData={this.state.userData} {...userAttendanceProps}/>} />
+				<Route path="/conferencesSessionsPresentations/:id/:sessionId" component={() => <PresentationsPage userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/conferencesRoles/:id" component={() => <ConferenceRolesPage userData={this.state.userData} {...userAttendanceProps}/>} />
 				<Route path="/ArticleReviews" component={ArticlesReviewsPage} />
 				<Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />

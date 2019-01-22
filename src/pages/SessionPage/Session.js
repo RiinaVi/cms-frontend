@@ -32,7 +32,7 @@ class Session extends Component {
   };
 
   render() {
-    const { name, chairName } = this.props.session;
+    const { name, chairName, sessionID } = this.props.session;
     const { timetable } = this.props;
     const rooms = this.getRooms();
     const columnSpan = this.getSessionColumnSpan();
@@ -47,7 +47,7 @@ class Session extends Component {
       <div
         onClick={() =>
           this.props.history.push(
-            `/sessionPresentations/${this.props.match.params.id}`
+            `/conferencesSessionsPresentations/${this.props.match.params.id}/${sessionID}`
           )
         }
         className="sessionItem"
