@@ -1,21 +1,28 @@
 import React, {Component} from 'react';
-import {Form, Icon, Input, Button, Modal} from 'antd';
+import {Form, Icon, Input, Button, Modal, message} from 'antd';
 import 'antd/dist/antd.css';
 import NormalRestorePassword from "./RestorePassword";
 import {login} from '../../connect/connectService';
 import {Link} from "react-router-dom";
 
-
 const FormItem = Form.Item;
 
 class NormalLoginForm extends Component {
     handleSubmit = (e) => {
+        let self = this;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 login(this.state.username, this.state.password).then(responseJson => {
                     console.log(responseJson);
                     this.props.onLoggedIn();
+                }).catch( error => {
+                    message.error("You entered wrong login or password!");
+                    self.setState({password: ''});
+                    self.props.form.setFieldsValue({
+                       'password' : ''
+                    });
+                    document.getElementById("userName").select();
                 });
                 console.log('Received values of form: ', values);
             }
@@ -72,7 +79,7 @@ class NormalLoginForm extends Component {
                         })(
                             <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                    placeholder="Username"
-                                   value={this.state.username}
+                                   //value={this.state.username}
                                    onChange={e => this.setState({username: e.target.value})}/>
                         )}
                     </FormItem>
@@ -82,7 +89,7 @@ class NormalLoginForm extends Component {
                         })(
                             <Input prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>} type="password"
                                    placeholder="Password"
-                                   value={this.state.password}
+                                   //value={this.state.password}
                                    onChange={e => this.setState({password: e.target.value})}/>
                         )}
                     </FormItem>
