@@ -84,7 +84,7 @@ class ArticlesPage extends Component {
 					<Content className="content">
 						<div className="ArticlesPage">
 							{this.props.userData &&
-								<Link to='UploadArticlePage'><Button className="upload_button">
+								<Link to='/UploadArticlePage'><Button className="upload_button">
 									<Icon type="upload" />Upload New Article
 								</Button></Link>
 							}
