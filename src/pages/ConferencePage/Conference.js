@@ -121,10 +121,10 @@ class Conference extends Component {
                             {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER) && <Button size='large'
                                                                                                         onClick={() => this.props.history.push(`/conferencesEdit/${this.props.match.params.id}`)}>Edit
                                 Event</Button>}
-                            {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) &&
+                            {/* {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) &&
                             <Button size='large'
                                     onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit
-                                the plan and proceedings</Button>}
+                                the plan and proceedings</Button>} */}
                             {this.props.userData && (this.isUserAttendingConference(this.props.userAttendance) ?
                                 <Button size='large' onClick={() => this.saveAttendance(false)}>Remove from my Events</Button>
                                 :

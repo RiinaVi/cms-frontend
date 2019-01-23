@@ -117,7 +117,7 @@ class SessionPlan extends Component {
             </tbody>
           </table>
           {confDates.map(date => (
-            <SessionGrid
+            <SessionGrid userAttendance={this.props.userAttendance}
               key={date.id}
               dayNum={date.id}
               date={date.date}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Session from './Session';
 import { Button } from 'antd';
+import { hasUserAnyRole, roles } from '../../utils/security';
 
 class SessionGrid extends Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class SessionGrid extends Component {
         <div className="dateShow">
           Day {this.props.dayNum}: {this.props.date.getDate()}/
           {this.props.date.getMonth() + 1}/{this.props.date.getFullYear()}
-          <Button
+          {hasUserAnyRole(this.props.userAttendance, roles.CONF_ORGANIZER, roles.EDITOR) && <Button
             size="small"
             onClick={() =>
               this.props.history.push(
@@ -68,7 +69,7 @@ class SessionGrid extends Component {
             }
           >
             Edit
-          </Button>
+          </Button>}
         </div>
         <div className="grid">
           {console.log('estoy aqui')}
