@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Conference.css';
-import {fetchSingleConference} from '../../connect/connectService';
+import {fetchSingleConference, updateUserConferenceAttendance, updateUserConferenceAttendanceAttend} from '../../connect/connectService';
 import {Button, Row, Col, Layout, Menu, Icon} from 'antd';
 import {withRouter, Link} from "react-router-dom";
 import {hasUserAnyRole, roles} from '../../utils/security';
@@ -20,6 +20,25 @@ class Conference extends Component {
         this.props.onCheckAttendance(this.props.match.params.id);
         fetchSingleConference(this.props.match.params.id).then(responseJson => {
             this.setState({conference: responseJson})
+        }).catch(error => console.log(error));
+    }
+
+	isUserAttendingConference = (userAttendance) => {
+		return userAttendance && userAttendance.some(attendance => (attendance.role === roles.ORDINARY && attendance.attendance));
+	}
+
+    saveAttendance = isAttending => {
+        const attendancesAttend = this.props.userAttendance.filter(attendance => attendance.role === roles.ORDINARY);
+        console.log(attendancesAttend)
+        const attendance = (attendancesAttend && attendancesAttend.length > 0) ? {
+            ...attendancesAttend[0],
+            attendance: isAttending
+        } : {
+            attendance: isAttending,
+            role: roles.ORDINARY
+        };
+        updateUserConferenceAttendanceAttend(this.props.match.params.id, attendance).then(responseJson => {
+            this.props.onCheckAttendance(this.props.match.params.id, true);
         }).catch(error => console.log(error));
     }
 
@@ -106,10 +125,10 @@ class Conference extends Component {
                             <Button size='large'
                                     onClick={() => this.props.history.push(`/conferencesEditPlan/${this.props.match.params.id}`)}>Edit
                                 the plan and proceedings</Button>}
-                            {this.props.userData && (this.props.userAttendance && this.props.userAttendance.length > 0 && this.props.userAttendance[0].attendance ?
-                                <Button size='large'>Remove from my Events</Button>
+                            {this.props.userData && (this.isUserAttendingConference(this.props.userAttendance) ?
+                                <Button size='large' onClick={() => this.saveAttendance(false)}>Remove from my Events</Button>
                                 :
-                                <Button type='primary' size='large'>Add to my Events</Button>)
+                                <Button type='primary' size='large' onClick={() => this.saveAttendance(true)}>Add to my Events</Button>)
                             }
                         </Col>
                     </Row>

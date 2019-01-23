@@ -76,6 +76,14 @@ export const fetchUserConferenceAttendance = conferenceId => {
   const url = `${apiUrlRequest}/conferences/${conferenceId}/attendance/user`;
   return fetchTemplate(url, httpMethods.GET)
 }
+export const updateAttendance = (conferenceId, attendance) => {
+  const url = `${apiUrlRequest}/conferences/${conferenceId}/attendancess`;
+  return fetchTemplate(url, httpMethods.POST, attendance)
+}
+export const updateUserConferenceAttendanceAttend = (conferenceId, attendance) => {
+  const url = `${apiUrlRequest}/attendanceUserAttend/${conferenceId}`;
+  return fetchTemplate(url, httpMethods.POST, attendance)
+}
 
 export const fetchUserLoggedIn = () => {
   const url = `${apiUrlRequest}/user`;

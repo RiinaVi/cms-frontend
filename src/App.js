@@ -34,6 +34,7 @@ import SessionPage from './pages/SessionPage';
 import ConferenceRolesPage from './pages/ConferenceRolesPage';
 import ConferenceProceedingsEdit from './pages/ConferenceProceedingsEdit';
 import PresentationsPage from './pages/PresentationsPage';
+import { roles } from './utils/security';
 
 
 const SubMenu = Menu.SubMenu;
@@ -67,9 +68,9 @@ class App extends Component {
 		}).catch(error => console.log(error));
 	}
 
-	checkConferenceAttendance = requireConfId => {
+	checkConferenceAttendance = (requireConfId, forceCheck = false) => {
 		const currConfID = this.state.conferenceAttendance.conferenceId;
-		if (currConfID === null || currConfID !== requireConfId) {
+		if (currConfID === null || currConfID !== requireConfId || forceCheck) {
 			fetchUserConferenceAttendance(requireConfId).then(responseJson => {
 				this.setState({conferenceAttendance: {conferenceId: requireConfId, roles: responseJson}})
 			}).catch(error => console.log(error));
