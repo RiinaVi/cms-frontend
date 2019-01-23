@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './style.css';
 import './grid.css';
 import SessionGrid from './SessionGrid';
-import { sessions } from './data';
 import { withRouter } from 'react-router-dom';
 import {
   fetchConferenceSessions,
