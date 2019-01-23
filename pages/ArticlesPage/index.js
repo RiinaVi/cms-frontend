@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {withRouter, Link} from "react-router-dom";
 import {List, Layout, Menu, Icon, Button} from 'antd';
 
-import ArticleItem from "./ArticleItem";
+import ArticleItem from "../ArticlesPage/ArticleItem";
 import 'antd/dist/antd.css';
 import './index.css';
 import { fetchArticlesLastVer } from '../../connect/connectService';
@@ -100,7 +100,7 @@ class ArticlesPage extends Component {
 								}}
 								dataSource={this.state.data}
 								renderItem={article_data => (
-									<ArticleItem articleData={article_data}/>
+									<ArticleItem userAttendance={this.props.userAttendance} userData={this.props.userData} articleData={article_data}/>
 								)}
 							/>
 						</div>

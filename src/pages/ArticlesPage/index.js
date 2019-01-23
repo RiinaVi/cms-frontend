@@ -7,6 +7,7 @@ import ArticleItem from "./ArticleItem";
 import 'antd/dist/antd.css';
 import './index.css';
 import { fetchArticlesLastVer } from '../../connect/connectService';
+import { roles, hasUserAnyRole } from '../../utils/security';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -83,7 +84,7 @@ class ArticlesPage extends Component {
 					</Sider>
 					<Content className="content">
 						<div className="ArticlesPage">
-							{this.props.userData &&
+							{this.props.userData && hasUserAnyRole(this.props.userAttendance, roles.AUTHOR) &&
 								<Link to='/UploadArticlePage'><Button className="upload_button">
 									<Icon type="upload" />Upload New Article
 								</Button></Link>
@@ -100,7 +101,7 @@ class ArticlesPage extends Component {
 								}}
 								dataSource={this.state.data}
 								renderItem={article_data => (
-									<ArticleItem articleData={article_data}/>
+									<ArticleItem userAttendance={this.props.userAttendance} articleData={article_data}/>
 								)}
 							/>
 						</div>

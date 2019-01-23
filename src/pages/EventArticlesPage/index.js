@@ -9,6 +9,7 @@ import './index.css';
 import EventArticleItem from "./EventArticleItem";
 import { fetchConferenceArticlesLastVer, fetchConferenceProceedingsLastVer } from '../../connect/connectService';
 import ArticleItem from '../ArticlesPage/ArticleItem';
+import { roles, hasUserAnyRole } from '../../utils/security';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -75,7 +76,7 @@ class EventArticlesPage extends Component {
 					</Sider>
 					<Content className="content">
 						<div className="EventArticlesPage">
-							{this.props.userData &&
+							{this.props.userData && hasUserAnyRole(this.props.userAttendance, roles.AUTHOR) &&
 								<Link to='/UploadArticlePage'><Button className="upload_button">
 									<Icon type="upload" />Upload New Article
 								</Button></Link>
@@ -92,7 +93,7 @@ class EventArticlesPage extends Component {
 								}}
 								dataSource={this.state.articles}
 								renderItem={articleData => (
-									<ArticleItem articleData={articleData} conferenceId={this.props.match.params.id}/>
+									<ArticleItem userData={this.props.userData} userAttendance={this.props.userAttendance} articleData={articleData} conferenceId={this.props.match.params.id}/>
 								)}
 							/>
 						</div>

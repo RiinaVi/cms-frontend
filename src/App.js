@@ -273,10 +273,10 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/ArticleReviews" component={ArticlesReviewsPage} />
-          <Route path="/ReviewerReviewsPage" component={ReviewersReviewsPage} />
-          <Route path="/AuthorArticlesPage" component={AuthorsArticlesPage} />
-          <Route path="/UploadArticlePage" component={UploadArticlePage} />
+          <Route path="/ArticleReviews" component={() => <ArticlesReviewsPage {...userAttendanceProps}/>} />
+          <Route path="/ReviewerReviewsPage" component={() => <ReviewersReviewsPage {...userAttendanceProps}/>} />
+          <Route path="/AuthorArticlesPage" component={() => <AuthorsArticlesPage {...userAttendanceProps}/>} />
+          <Route path="/UploadArticlePage" component={() => <UploadArticlePage {...userAttendanceProps}/>} />
         </div>
       </Router>
     );

@@ -5,6 +5,7 @@ import * as download from 'downloadjs';
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import { downloadArticle, addReview, updateReview, fetchReviewForArticle } from '../../connect/connectService';
+import { roles, hasUserAnyRole } from '../../utils/security';
 
 class ArticleItem extends Component {
   constructor(props) {
@@ -71,7 +72,7 @@ class ArticleItem extends Component {
         <div className="articleAction">
           <Icon type="download" onClick={this.downloadArticle} style={{fontSize: '2em', cursor: 'pointer'}} />
           <Icon type="read" onClick={() => this.readOrEditReview(false)} style={{fontSize: '2em', cursor: 'pointer'}} />
-          <Icon type="edit" onClick={() => this.readOrEditReview(true)} style={{fontSize: '2em', cursor: 'pointer'}} />
+          {this.props.userData && hasUserAnyRole(this.props.userAttendance, roles.REVIEWER) && <Icon type="edit" onClick={() => this.readOrEditReview(true)} style={{fontSize: '2em', cursor: 'pointer'}} />}
         </div>
         <Modal
           title="Read review"
